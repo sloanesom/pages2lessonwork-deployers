@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Introduction -- Why Guide? 
-author: David M, Sloane S
-permalink: /cpt/gain-attention
+title: Introduction -- Why Source? 
+author: John Mortensen
+permalink: /plagiarism/gain-attention
 breadcrumb: True
 ---
 
