@@ -50,23 +50,5 @@ lxdData:
       Lessons: "/cpt/4"
       Image: "/images/plagiarism/group-workshop.svg"
       Alt: "AI-powered plagiarism detection workshop"
-    - Title: "C5: Instructor Assessment"
-      Genre: "Assessment"
-      Level: 5
-      Description: "Comprehensive evaluation of student mastery across all modules. Instructors review portfolios and provide pass/retry determinations."
-      Categories: ["Assessment", "Portfolio Review", "Instructor Evaluation"]
-      Video: "/plagiarism/5/assessment"
-      Lessons: "/cpt/5"
-      Image: "/images/plagiarism/mastery.svg"
-      Alt: "Instructor assessment interface"
-    - Title: "C6: Mastery Certificate"
-      Genre: "Integration"
-      Level: 6
-      Description: "Review completed work, receive feedback, and obtain your official APA citations mastery certificate. Celebrate your academic integrity achievement!"
-      Categories: ["Certificate", "Integration", "Achievement"]
-      Video: "/plagiarism/6/certificate"
-      Lessons: "/cpt/6"
-      Image: "/images/plagiarism/certificate.svg"
-      Alt: "Academic integrity mastery certificate"
 ---
 {%- include tailwind/plagiarism_info.html -%}
