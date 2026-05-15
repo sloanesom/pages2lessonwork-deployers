@@ -21,7 +21,7 @@ lxdData:
       Categories: ["Cases", "Real-world", "Consequences"]
       Video: "/plagiarism/1/video"
       Lessons: "/cpt/1"
-      Image: "/images/plagiarism/why-matters.svg"
+      Image: "/images/cpt/c1.webp"
       Alt: "Plagiarism consequences and case studies"
     - Title: "C2: Draft the CPT Project Layout"
       Genre: "Demonstration"
@@ -30,7 +30,7 @@ lxdData:
       Categories: ["APA", "Citation", "Interactive Tools"]
       Video: "/plagiarism/2/apa-citation"
       Lessons: "/cpt/2"
-      Image: "/images/plagiarism/apa-citation.svg"
+      Image: "/images/cpt/c2.jpg"
       Alt: "Interactive APA citation generator"
     - Title: "C3: Trace the Program"
       Genre: "Practice"
@@ -39,7 +39,7 @@ lxdData:
       Categories: ["Practice", "Correction", "Error Detection"]
       Video: "/plagiarism/3/practice"
       Lessons: "/cpt/3"
-      Image: "/images/plagiarism/correct-errors.svg"
+      Image: "/images/cpt/c3.webp"
       Alt: "Reference correction exercises"
     - Title: "C4: Collegeboard FRQ Questions"
       Genre: "Application"
@@ -48,7 +48,7 @@ lxdData:
       Categories: ["Workshop", "AI Analysis", "Writing Development"]
       Video: "/plagiarism/4/workshop"
       Lessons: "/cpt/4"
-      Image: "/images/plagiarism/group-workshop.svg"
+      Image: "/images/cpt/c4.webp"
       Alt: "AI-powered plagiarism detection workshop"
 ---
 {%- include tailwind/plagiarism_info.html -%}
