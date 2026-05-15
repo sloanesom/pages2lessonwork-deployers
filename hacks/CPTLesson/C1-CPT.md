@@ -16,7 +16,6 @@ lxdData:
   Topics:
     - Title: "Draft your CPT Ideas"
       Description: "The best  CPT projects are simple and easy to explain. You do NOT need a complex app. A simple idea is easier to debug, show and explain your components, and update"
-      Video: "https://youtu.be/TSJUgws9M-E?t=69"
       Image: "/images/cpt/c1.webp"
 ---
 {%- include tailwind/plagiarism_cases.html -%}
