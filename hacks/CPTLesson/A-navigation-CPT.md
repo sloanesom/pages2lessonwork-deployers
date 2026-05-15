@@ -9,10 +9,7 @@ author: David M, Sloane S
 permalink: /cpt
 lxdData:
   Title: "Learning Modules"
-  Description: "Explore this quest of lessons and workshops to build the APCSP Projects"
-  Prequisites:
-    - title: "Why source ©?"
-      link: "/cpt/gain-attention"
+  Description: "Explore this quest of lessons and workshops to build the APCSP CPT Project"
   Topics:
     - Title: "C1: Idea and Inspirations for the CPT"
       Genre: "Activation"
