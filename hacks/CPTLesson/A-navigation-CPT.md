@@ -15,17 +15,13 @@ lxdData:
       Genre: "Activation"
       Level: 1
       Description: "Explore CPT requirements and simply ideas to start the project."
-      Categories: ["Cases", "Real-world", "Consequences"]
-      Video: "/plagiarism/1/video"
       Lessons: "/cpt/1"
       Image: "/images/cpt/c1.webp"
       Alt: "Plagiarism consequences and case studies"
     - Title: "C2: Draft the CPT Project Layout"
-      Genre: "Demonstration"
+      Genre: "Drafting"
       Level: 2
       Description: "Fully understand Collegeboard CPT requirements and draft the project to be polished later"
-      Categories: ["APA", "Citation", "Interactive Tools"]
-      Video: "/plagiarism/2/apa-citation"
       Lessons: "/cpt/2"
       Image: "/images/cpt/c2.jpg"
       Alt: "Interactive APA citation generator"
@@ -33,8 +29,6 @@ lxdData:
       Genre: "Practice"
       Level: 3
       Description: "Trace and explain the purpose and phases of the project to be used to practice answer AP exam questions later about the CPT"
-      Categories: ["Practice", "Correction", "Error Detection"]
-      Video: "/plagiarism/3/practice"
       Lessons: "/cpt/3"
       Image: "/images/cpt/c3.webp"
       Alt: "Reference correction exercises"
@@ -42,8 +36,6 @@ lxdData:
       Genre: "Application"
       Level: 4
       Description: "Practice answering common AP exam questions about the CPT by using the previous ideas and drafts in this quest."
-      Categories: ["Workshop", "AI Analysis", "Writing Development"]
-      Video: "/plagiarism/4/workshop"
       Lessons: "/cpt/4"
       Image: "/images/cpt/c4.webp"
       Alt: "AI-powered plagiarism detection workshop"
