@@ -73,7 +73,7 @@
     <div class="module-progress">
       <div class="progress-bar" id="overall-progress"></div>
     </div>
-    <p class="text-gray-300 text-sm" id="progress-text">Complete modules C1-C6 to earn your certificate</p>
+    <p class="text-gray-300 text-sm" id="progress-text">Complete modules C1-C4 to earn your certificate</p>
   </div>
 </div>
 
@@ -125,7 +125,6 @@
             <p class="text-sm text-gray-400 mb-2">{{ topic.Genre }} | Level: {{ topic.Level }}</p>
             <p class="text-gray-300 text-sm mb-4">{{ topic.Description }}</p>
             <div class="mb-4">
-              <span class="text-sm font-semibold text-gray-200">Categories:</span>
               <div class="flex flex-wrap gap-1 mt-1">
                 {% for cat in topic.Categories %}
                   <span class="bg-blue-900 text-blue-200 text-xs px-2 py-1 rounded-full">{{ cat }}</span>
@@ -134,7 +133,6 @@
             </div>
             <div class="flex gap-2">
               <a href="{{ site.baseurl }}{{ topic.Lessons }}" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition lesson-link">Start Module</a>
-              <a href="{{ topic.Video }}" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition video-link">Watch Video</a>
             </div>
           </div>
         </div>

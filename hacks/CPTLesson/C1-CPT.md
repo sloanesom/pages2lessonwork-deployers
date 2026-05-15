@@ -6,14 +6,13 @@ author: David M, Sloane S
 permalink: /cpt/1
 breadcrumb: True
 lxdData:
-  Title: "Plagiarism Case Studies"
+  Title: "Draft the Idea for CPT"
   Description: >
-    Plagiarism has real consequences—lawsuits, lost money, damaged reputations, and public embarrassment. These true stories show what happens when famous authors, musicians, and leaders are caught copying. See what’s at stake when you don’t give credit.
-  Audience: "High school and college students"
+    This is a guide to help APCSP students draft their CPT project's purpose.
+  Audience: "AP CSP students"
   LearningObjectives:
-    - "Recognize real-world consequences of plagiarism."
-    - "Understand the importance of proper citation and reference."
-    - "Analyze outcomes of landmark plagiarism cases."
+    - "Understand the APCSP CPT requirements"
+    - "Draft the purpose of your CPT Project"
   Topics:
     - Title: "Roots, Acclaimed Novel Plagiarism "
       Year: 1978
@@ -22,8 +21,6 @@ lxdData:
       Reference: "Haley v. Courlander, 84 F.R.D. 366 (S.D.N.Y. 1978)."
       Description: "<b>Haley v. Courlander (1978).</b> Author Alex Haley was sued by Harold Courlander for plagiarizing passages in his novel <b>Roots</b> from Courlander’s earlier novel <b>The African</b>. The case was settled out of court for <b>$650,000</b> (over $2 million in today’s currency), and Haley issued a statement acknowledging the use of Courlander’s work."
       Video: "https://youtu.be/TSJUgws9M-E?t=69"
-      Audio: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/aa/c9/7d/aac97d88-d976-8431-0b56-a313e0b6aa06/mzaf_6117638231976980732.plus.aac.p.m4a"
-      Audio_Source: "iTunes Store preview"
       Image: "https://images.openai.com/thumbnails/url/ykmNbnicu1mUUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw628Eit0K0MrHLPSU0qMfE0jzQJSC0JSPevCPR2TU93Kym2zHUuLCnXLXU3KfAJK8xy98lwyvP1CvRXKwYA064pkw"
       Alt: "Alex Haley from BlackPast.org, CC BY-SA 4.0"
     - Title: "George Harrison, Musical Plagiarism"
