@@ -60,90 +60,89 @@ Your program MUST include:
 
   <div style="margin-top: 15px;">
     <h4>Purpose</h4>
-    <p>Automate and scaffold the citation correction workflow for students using AI-powered quote research and manual citation building.</p>
+    <p>This tool helps you break down your CPT project into the required AP CSP components.
+    You will organize your idea into input, output, lists, procedures, and algorithms.</p>
 
     <h4>How to Use</h4>
     <ol>
-      <li><strong>AI Method:</strong> Paste a quote or text snippet in the research box and click "Generate APA Citation from Quote" - AI will find the source and fill all fields automatically</li>
-      <li><strong>Manual Method:</strong> Enter citation information directly in the fields below</li>
-      <li>Review and adjust the auto-filled information as needed</li>
-      <li>Use "Save" and "Load" buttons to preserve your work across sessions</li>
-      <li>Copy the generated reference for use in your work</li>
+      <li><strong>Step 1:</strong> Write your CPT project idea in the editor</li>
+      <li><strong>Step 2:</strong> Fill in each requirement section based on your idea</li>
+      <li><strong>Step 3:</strong> Use the review tool to check if your project meets CPT requirements</li>
+      <li><strong>Step 4:</strong> Save and load your draft as you refine your project</li>
     </ol>
     
-    <h4>Features</h4>
+    <h4>CPT Requirements You Must Include</h4>
     <ul>
-      <li><strong>AI-powered research:</strong> Automatically finds primary sources from partial quotes or text snippets</li>
-      <li><strong>Formal quote display:</strong> Shows the exact/corrected version from the original source</li>
-      <li><strong>Real-time formatting:</strong> Automatically formats your citation in proper APA style</li>
-      <li><strong>Save/Restore:</strong> Preserves your work and avoids repeated API calls</li>
-      <li><strong>Clickable URLs:</strong> Generated References include working links to sources</li>
-      <li><strong>Educational comparison:</strong> Compare your input quote with the formal version</li>
+      <li><strong>Input:</strong> How the user interacts with your program</li>
+      <li><strong>Output:</strong> What the program shows or returns to the user</li>
+      <li><strong>List:</strong> A collection of data stored and used in your program</li>
+      <li><strong>Procedure:</strong> A function with at least one parameter</li>
+      <li><strong>Algorithm:</strong> A step-by-step process including sequencing, selection, and iteration</li>
     </ul>
     
-    <h4>Instructions</h4>
-    <p>Have a quote but don't know the source? Paste it in the AI research box - even partial or imperfect quotes work! The AI will research the primary source, provide the formal quote, and fill in all citation details automatically. You can then save your work and reload it later without needing to call the AI again.</p>
+    <h4>Key Idea</h4>
+    <p> Your goal is not just to describe a project, but to clearly map your idea to all CPT requirements so it is ready for the AP CSP Create Performance Task.</p>
   </div>
 </details>
 
 <div class="citation-container">
-  <h3>APA Citation Generator</h3>
+  <h3>CPT Project Layout Builder</h3>
   
-  <!-- Optional Quote Input for AI Generation -->
+  <!-- Guidance Section -->
   <div style="padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #dee2e6;">
-    <h4 style="margin-top: 0; color: #495057;">AI-Powered Citation Helper</h4>
+    <h4 style="margin-top: 0; color: #495057;">AI CPT Idea Helper</h4>
 
-    <label class="apa-tool-label">Quote or Text to Research:</label>
-    <textarea class="apa-tool-input" id="user-provided-quote" placeholder="Paste your quote here (e.g., 'Innovation distinguishes between a leader and a follower')" style="min-height: 80px; resize: vertical;"></textarea>
+    <label class="apa-tool-label">Project Idea (for AI feedback):</label>
+    <textarea class="apa-tool-input" id="user-provided-quote" placeholder="Describe your CPT project idea here..." style="min-height: 80px; resize: vertical;"></textarea>
     
     <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
       <button class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition" onclick="generativeQuoteToFillValuesForAPA()">
-        🔍 Generate APA Citation from Quote
+        🔍 Generate CPT Requirement Suggestions
       </button>
       <button class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition" onclick="saveCurrentCitation()" style="background-color: #28a745;">
-        � Save Current Citation
+        💾 Save Current Layout
       </button>
       <button class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition" onclick="loadSavedCitation()" style="background-color: #17a2b8;">
-        📂 Load Saved Citation
+        📂 Load Saved Layout
       </button>
     </div>
     
     <div id="ai-status" style="margin-top: 10px; padding: 8px; border-radius: 4px; display: none;"></div>
     
-    <!-- Formal Quote Display -->
-    <div id="formal-quote-display" style="margin-top: 15px; padding: 12px; border-left: 4px solid #007bff; border-radius: 4px; display: none;">
-      <strong>📖 Formal Quote (from source):</strong><br>
-      <em id="formal-quote-text" style="font-style: italic; color: #495057;"></em>
+    <!-- AI Feedback Display -->
+    <div id="cpt-feedback-display" style="margin-top: 15px; padding: 12px; border-left: 4px solid #007bff; border-radius: 4px; display: none;">
+      <strong>🧠 CPT Feedback:</strong><br>
+      <em id="cpt-feedback-text" style="font-style: italic; color: #495057;"></em>
     </div>
     
-    <!-- In-Text Citation Display -->
-    <div id="intext-citation-display" style="margin-top: 15px; padding: 12px; border-left: 4px solid #28a745; border-radius: 4px; display: none;">
-      <strong>📝 In-Text Citation:</strong><br>
-      <code id="intext-citation-text" style="padding: 4px 8px; border-radius: 3px; font-family: monospace;"></code>
+    <!-- Suggested Structure Output -->
+    <div id="cptt-suggestion-display" style="margin-top: 15px; padding: 12px; border-left: 4px solid #28a745; border-radius: 4px; display: none;">
+      <strong>📝 Suggested CPT Structure:</strong><br>
+      <code id="cpt-suggestion-text" style="padding: 4px 8px; border-radius: 3px; font-family: monospace;"></code>
     </div>
   </div>  <!-- Manual Citation Fields -->
-  <h4 style="margin-bottom: 15px; color: #495057;">Manual Citation Builder</h4>
+  <h4 style="margin-bottom: 15px; color: #495057;">Manual CPT Layout Builder</h4>
   
   <label class="apa-tool-label">Author(s):</label>
-  <input class="apa-tool-input" id="apa-author" type="text" placeholder="e.g., Doe, J." />
+  <input class="apa-tool-input" id="cpt-input" type="text" placeholder="User interaction (clicking, typing, selecting)" />
   
   <label class="apa-tool-label">Date (Year, Month Day):</label>
-  <input class="apa-tool-input" id="apa-date" type="text" placeholder="e.g., 2025, May 10" />
+  <input class="apa-tool-input" id="cpt-output" type="text" placeholder="What the program displays" />
   
   <label class="apa-tool-label">Title (in italics):</label>
-  <input class="apa-tool-input" id="apa-title" type="text" placeholder="e.g., Harvard revokes tenure of Francesca Gino after misconduct findings" />
+  <input class="apa-tool-input" id="cpt-list" type="text" placeholder="Data stored in a list" />
   
   <label class="apa-tool-label">Source/Website:</label>
-  <input class="apa-tool-input" id="apa-source" type="text" placeholder="e.g., The New York Times" />
+  <input class="apa-tool-input" id="cpt-procedure" type="text" placeholder="Function with parameter" />
   
   <label class="apa-tool-label">URL:</label>
-  <input class="apa-tool-input" id="apa-url" type="text" placeholder="e.g., https://www.nytimes.com/article-link" />
+  <input class="apa-tool-input" id="cpt-algorithim" type="text" placeholder="Sequence + if + loop logic" />
   
-  <button class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition" onclick="generateAPA()">Generate APA Reference & Citation</button>
+  <button class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition" onclick="generateCPTLayout()">Generate CPT Layout Summary</button>
   
-  <div class="apa-tool-output" id="apa-output">
-    <strong>Generated Reference:</strong><br>
-    <span id="citation-text"></span>
+  <div class="apa-tool-output" id="cpt-output-box">
+    <strong>Generated CPT Layout:</strong><br>
+    <span id="cpt-layout-text"></span>
   </div>
 </div>
 
