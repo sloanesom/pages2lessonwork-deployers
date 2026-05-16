@@ -74,16 +74,6 @@ button {
   background: #28a745;
   color: white;
 }
-
-.load {
-  background: #007bff;
-  color: white;
-}
-
-.clear {
-  background: #dc3545;
-  color: white;
-}
 </style>
 
 <div class="container">
@@ -100,9 +90,9 @@ button {
 </div>
 
 <div class="section">
-<h3>🧠 Program Idea</h3>
+<h3>Written Response of Purpose</h3>
 <textarea id="programInput"></textarea>
-<button onclick="save('programInput')">Save</button>
+<button class="save" onclick="save('programInput')">Save</button>
 </div>
 
 <div class="section">
@@ -110,25 +100,23 @@ button {
 
 <label>Input / Start State</label>
 <textarea id="inputState"></textarea>
-<button onclick="save('inputState')">Save</button>
+<button class="save" onclick="save('inputState')">Save</button>
 
 <label>Loop Behavior</label>
 <textarea id="loopState"></textarea>
-<button onclick="save('loopState')">Save</button>
+<button class="save" onclick="save('loopState')">Save</button>
 
 <label>Condition</label>
 <textarea id="conditionState"></textarea>
-<button onclick="save('conditionState')">Save</button>
+<button class="save" onclick="save('conditionState')">Save</button>
 
 <label>Updates</label>
 <textarea id="updateState"></textarea>
-<button onclick="save('updateState')">Save</button>
+<button class="save" onclick="save('updateState')">Save</button>
 
 <label>Output</label>
 <textarea id="outputState"></textarea>
-<button onclick="save('outputState')">Save</button>
-
-</div>
+<button class="save" onclick="save('outputState')">Save</button>
 
 </div>
 
