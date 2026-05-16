@@ -21,11 +21,14 @@ Your program must include:
 - **Algorithm**: sequencing, selection, iteration  
 
 ---
-
 <style>
+/* Fix text visibility */
 body, .container, .container * {
   color: #000 !important;
-  box-sizing: border-box;
+}
+
+.CodeMirror, .CodeMirror * {
+  color: inherit !important;
 }
 
 .container {
@@ -142,15 +145,6 @@ button.clear { background: #dc3545; color: #fff; }
     <label for="algorithmField">Algorithm</label>
     {% include code-runner.html
        runner_id="algorithm_runner"
-       language="python"
-       code=""
-    %}
-  </div>
-
-  <div class="section">
-    <h3>🧾 Final Drafting Box</h3>
-    {% include code-runner.html
-       runner_id="final_draft_runner"
        language="python"
        code=""
     %}

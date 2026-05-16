@@ -24,8 +24,13 @@ Key idea: You are tracking execution over time, not just describing code.
 ---
 
 <style>
+/* Fix text visibility */
 body, .container, .container * {
-  color: #000 !important;
+  color: #000;
+}
+
+.CodeMirror, .CodeMirror * {
+  color: inherit !important;
 }
 
 .container {
@@ -96,27 +101,53 @@ button {
 </div>
 
 <div class="section">
+<h3>🧾 Finalized Trace Box</h3>
+{% include code-runner.html
+   runner_id="trace_final_runner"
+   language="python"
+   code=""
+%}
+</div>
+
+<div class="section">
 <h3>✍️ Program Trace</h3>
 
 <label>Input / Start State</label>
-<textarea id="inputState"></textarea>
-<button class="save" onclick="save('inputState')">Save</button>
+{% include code-runner.html
+   runner_id="trace_input_runner"
+   language="python"
+   code=""
+%}
 
 <label>Loop Behavior</label>
-<textarea id="loopState"></textarea>
-<button class="save" onclick="save('loopState')">Save</button>
+{% include code-runner.html
+   runner_id="trace_loop_runner"
+   language="python"
+   code=""
+%}
 
 <label>Condition</label>
-<textarea id="conditionState"></textarea>
-<button class="save" onclick="save('conditionState')">Save</button>
+{% include code-runner.html
+   runner_id="trace_condition_runner"
+   language="python"
+   code=""
+%}
 
 <label>Updates</label>
-<textarea id="updateState"></textarea>
-<button class="save" onclick="save('updateState')">Save</button>
+{% include code-runner.html
+   runner_id="trace_updates_runner"
+   language="python"
+   code=""
+%}
 
 <label>Output</label>
-<textarea id="outputState"></textarea>
-<button class="save" onclick="save('outputState')">Save</button>
+{% include code-runner.html
+   runner_id="trace_output_runner"
+   language="python"
+   code=""
+%}
+
+</div>
 
 </div>
 
@@ -128,7 +159,7 @@ function save(id) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  ["programInput","inputState","loopState","conditionState","updateState","outputState"]
+  ["programInput"]
   .forEach(id => {
     const saved = localStorage.getItem(id);
     if (saved) document.getElementById(id).value = saved;
