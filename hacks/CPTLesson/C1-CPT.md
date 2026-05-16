@@ -2,8 +2,8 @@
 layout: post
 microblog: True
 breadcrumb: True
-title: Plagiarism Avoidance Workshop 
-description: A tool to assist students in building an APA reference in citations using AI. 
+title: CPT Project Idea and Purpose 
+description: A tool to help students brainstorm and refine their CPT project ideas and purpose.  
 author: David M, Sloane S
 permalink: /cpt/1
 ---
@@ -24,9 +24,7 @@ Review work an progress with advanced cohort.
 <style>
 /* Target the output container */
 #output {
-    /* Ensure long content and formatting is handled correctly */
     padding: 10px;
-    /* Allows text to wrap naturally inside the div */
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
@@ -75,8 +73,6 @@ button:hover {
 .sample-text {
     display: none;
 }
-
-/* File-specific styles only - iridescent styles moved to _sass/open-coding/elements/buttons/iridescent.scss */
 </style>
 
 <details style="padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #007bff;">
@@ -120,36 +116,35 @@ button:hover {
 <div id="status-message" style="margin: 10px 0; padding: 8px; border-radius: 4px; display: none;"></div>
 <div id="output"></div>
 
-<!-- Hidden sample texts -->
+<!-- Hidden sample CPT idea texts (UPDATED) -->
 <div class="sample-text" data-type="plagiarism">
-Literature has shaped culture and society through memorable phrases that continue to resonate today. For example, `It was the best of times, it was the worst of times` captures the contrasts of life in a way that still feels relevant. Another famous phrase, `Romeo, Romeo, where art thou`, has been quoted in countless settings as a symbol of love and longing. Likewise, in film and popular culture, lines such as `Frankly Scarlett, I don't give a damn` are recognized across generations.
+My CPT project is a School Club Finder. The purpose of my program is to help students find clubs, meeting times, and locations. Users can search for clubs and see basic information about each club.
 </div>
 
 <div class="sample-text" data-type="plagiarism">
-The concept of artificial intelligence has evolved dramatically since the 1950s. Early pioneers like Alan Turing proposed that machines could think, leading to what we now call the Turing Test. Modern AI systems can process natural language, recognize images, and even create art. As we move forward, questions about AI ethics and human-AI collaboration become increasingly important for society.
+My CPT project is a Fast Food Comparison Tool. The purpose of my program is to help users compare food items based on price, calories, and ratings. Users can select meals and see which option is best for them.
 </div>
 
 <div class="sample-text" data-type="plagiarism">
-Climate change represents one of the most pressing challenges of our time. Scientists worldwide have documented rising global temperatures, melting ice caps, and changing weather patterns. The Paris Agreement brought nations together to address these issues, though implementation remains challenging. Individual actions, while important, must be combined with systemic changes to create meaningful impact.
+My CPT project is a Homework Tracker. The purpose of my program is to help students organize assignments, due dates, and classwork. Users can add tasks and mark them as complete when finished.
 </div>
 
 <div class="sample-text" data-type="thesis">
-Social media has fundamentally changed how people communicate and share information. While it has connected people across the globe and democratized access to information, it has also contributed to the spread of misinformation and created new forms of social anxiety. This paper will examine both the positive and negative impacts of social media on modern society, arguing that regulation and digital literacy education are essential for maximizing benefits while minimizing harm.
+My CPT project is a Study Planner that helps students organize their study schedule. Users can add assignments, plan study sessions, and track what they need to complete each day.
 </div>
 
 <div class="sample-text" data-type="five-paragraph">
-Technology education should be mandatory in all elementary schools. First, students need digital literacy skills to succeed in the modern workforce. Second, early exposure to coding and computational thinking develops problem-solving abilities. Third, technology education helps bridge the digital divide by ensuring all students have equal access to these essential skills. Therefore, investing in technology education at the elementary level is crucial for preparing students for their future careers and creating a more equitable society.
+My CPT project is a Quiz Practice App that helps students study by answering questions and tracking their score. Users can take quizzes and review their mistakes to improve.
 </div>
 
 <div class="sample-text" data-type="research">
-Recent studies in cognitive psychology have revealed new insights into how memory formation works in the human brain. Researchers at several universities have used advanced neuroimaging techniques to observe real-time neural activity during learning tasks. Their findings suggest that sleep plays a more crucial role in memory consolidation than previously understood. This research has important implications for educational practices and therapeutic interventions for memory-related disorders.
+My CPT project is a Fitness Tracker that helps users log workouts and track progress over time. Users can record exercises and view their improvement.
 </div>
 
 <script type="module">
     // Import the new modular API
     import { queryGemini } from '{{ site.baseurl }}/assets/js/api/gemini.js';
 
-    // Analysis prompts for different modes
     const ANALYSIS_PROMPTS = {
         plagiarism: "Please look at this text for correct academic reference, document citations, and make recommendations for each area of concern: ",
         thesis: "Please analyze this text for thesis development. Check for clear thesis statement, supporting arguments, and overall coherence: ",
@@ -169,24 +164,17 @@ Recent studies in cognitive psychology have revealed new insights into how memor
         document.getElementById("test-mode-c4").onclick = function() {
             if (confirm("This will fill the editor with sample text for testing. Continue?")) {
                 const sampleText = `
-Artificial intelligence is transforming education by providing personalized learning experiences. Many educators are exploring how AI can enhance traditional teaching methods. According to recent research, AI-powered adaptive learning systems can significantly improve student outcomes.
-
-Machine learning algorithms analyze student performance data to identify areas where individual learners need additional support. This technology enables teachers to provide more targeted interventions and customized learning paths.
-
-However, the integration of AI in education also raises important questions about data privacy, algorithmic bias, and the changing role of human instructors. As educational institutions continue to adopt these technologies, it becomes crucial to establish proper guidelines for citation and attribution when using AI-generated content in academic work.
-
-The future of education will likely involve a collaborative approach between human educators and AI systems, working together to create more effective and inclusive learning environments for all students.
+Artificial intelligence is transforming education by providing personalized learning experiences. Many educators are exploring how AI can enhance traditional teaching methods.
 `;
                 quill.setText(sampleText);
                 document.getElementById("submitBtn").disabled = false;
-                showStatusMessage("🧪 Test mode: Editor filled with sample text for plagiarism analysis!", "info");
+                showStatusMessage("🧪 Test mode activated!", "info");
             }
         };
 
-        // Save Draft button
         document.getElementById("saveBtn").onclick = function() {
-            const text = quill.getContents(); // Get full Delta format with formatting
-            const plainText = quill.getText(); // Get plain text
+            const text = quill.getContents();
+            const plainText = quill.getText();
             const mode = document.getElementById("analysisMode").value;
 
             const draft = {
@@ -194,201 +182,57 @@ The future of education will likely involve a collaborative approach between hum
                 plainText: plainText,
                 mode: mode,
                 timestamp: new Date().toISOString(),
-                id: 'writing-draft-v1' // Version for future compatibility
+                id: 'writing-draft-v1'
             };
 
-            try {
-                localStorage.setItem('plagiarism-writing-draft', JSON.stringify(draft));
-                showStatusMessage("✅ Draft saved successfully!", "success");
-
-                // Enable submit button if there's content
-                if (plainText.trim().length > 0) {
-                    document.getElementById("submitBtn").disabled = false;
-                }
-            } catch (error) {
-                showStatusMessage("❌ Failed to save draft: " + error.message, "error");
-            }
+            localStorage.setItem('plagiarism-writing-draft', JSON.stringify(draft));
+            showStatusMessage("Draft saved!", "success");
         };
 
-        // Load Draft button
         document.getElementById("loadBtn").onclick = function() {
-            try {
-                const savedDraft = localStorage.getItem('plagiarism-writing-draft');
+            const savedDraft = localStorage.getItem('plagiarism-writing-draft');
 
-                if (savedDraft) {
-                    const draft = JSON.parse(savedDraft);
-
-                    // Set the content with formatting
-                    quill.setContents(draft.content);
-
-                    // Set the analysis mode
-                    document.getElementById("analysisMode").value = draft.mode;
-
-                    // Show success message with timestamp
-                    const saveDate = new Date(draft.timestamp).toLocaleString();
-                    showStatusMessage(`✅ Draft loaded successfully! (Saved: ${saveDate})`, "success");
-
-                    // Enable submit button if there's content
-                    if (draft.plainText && draft.plainText.trim().length > 0) {
-                        document.getElementById("submitBtn").disabled = false;
-                    }
-                } else {
-                    showStatusMessage("⚠️ No saved draft found", "warning");
-                }
-            } catch (error) {
-                showStatusMessage("❌ Failed to load draft: " + error.message, "error");
+            if (savedDraft) {
+                const draft = JSON.parse(savedDraft);
+                quill.setContents(draft.content);
+                showStatusMessage("Draft loaded!", "success");
+            } else {
+                showStatusMessage("No draft found", "warning");
             }
         };
 
-        // Submit button - Move from draft to assessment storage
-        document.getElementById("submitBtn").onclick = function() {
-            const text = quill.getText().trim();
-            const content = quill.getContents();
-            const mode = document.getElementById("analysisMode").value;
-
-            if (text.length === 0) {
-                showStatusMessage("⚠️ Cannot submit empty text", "warning");
-                return;
-            }
-
-            try {
-                // Create assessment data from current editor content
-                const assessmentData = {
-                    lesson: 'C4-application_avoidance-workshop',
-                    studentWork: {
-                        writingContent: text,
-                        deltaContent: content, // Full Quill.js Delta format
-                        analysisMode: mode,
-                        wordCount: text.split(/\s+/).filter(word => word.length > 0).length
-                    },
-                    timestamp: new Date().toISOString(),
-                    completed: true
-                };
-
-                // Move from draft storage to instructor assessment storage
-                localStorage.setItem('plagiarism-c4-assessment', JSON.stringify(assessmentData));
-
-                // Remove the draft since it's now submitted
-                localStorage.removeItem('plagiarism-writing-draft');
-
-                showStatusMessage("🎓 Writing sample submitted for instructor assessment! Draft cleared.", "success");
-
-                // Disable submit button after successful submission
-                document.getElementById("submitBtn").disabled = true;
-            } catch (error) {
-                showStatusMessage("❌ Failed to submit for assessment: " + error.message, "error");
-            }
-        };
-
-        // Auto-save on content change (optional)
-        let autoSaveTimeout;
-        quill.on('text-change', function() {
-            clearTimeout(autoSaveTimeout);
-            autoSaveTimeout = setTimeout(() => {
-                // Auto-enable submit button when there's content
-                const text = quill.getText().trim();
-                document.getElementById("submitBtn").disabled = text.length === 0;
-            }, 500);
-        });
-
-        // Status message helper function
-        function showStatusMessage(message, type) {
-            const statusDiv = document.getElementById("status-message");
-            statusDiv.textContent = message;
-            statusDiv.style.display = "block";
-
-            // Style based on message type
-            switch(type) {
-                case "success":
-                    statusDiv.style.backgroundColor = "#d4edda";
-                    statusDiv.style.color = "#155724";
-                    statusDiv.style.border = "1px solid #c3e6cb";
-                    break;
-                case "error":
-                    statusDiv.style.backgroundColor = "#f8d7da";
-                    statusDiv.style.color = "#721c24";
-                    statusDiv.style.border = "1px solid #f5c6cb";
-                    break;
-                case "warning":
-                    statusDiv.style.backgroundColor = "#fff3cd";
-                    statusDiv.style.color = "#856404";
-                    statusDiv.style.border = "1px solid #ffeaa7";
-                    break;
-                case "info":
-                    statusDiv.style.backgroundColor = "#d1ecf1";
-                    statusDiv.style.color = "#0c5460";
-                    statusDiv.style.border = "1px solid #bee5eb";
-                    break;
-            }
-
-            // Auto-hide after 3 seconds
-            setTimeout(() => {
-                statusDiv.style.display = "none";
-            }, 3000);
-        }
-
-        // Load a random sample on page load
-        loadRandomSample();
-
-        // Analyze Text button
         document.getElementById("checkBtn").onclick = function() {
             const text = quill.getText();
             const mode = document.getElementById("analysisMode").value;
-            const outputDiv = document.getElementById("output");
 
-            // Clear previous output and show analyzing message
-            outputDiv.textContent = "⏳ Analyzing...";
+            document.getElementById("output").textContent = "Analyzing...";
 
-            const prompt = ANALYSIS_PROMPTS[mode] || ANALYSIS_PROMPTS.plagiarism;
-
-            // Use the new modular API with functional programming style
             queryGemini({
-                prompt: prompt,
+                prompt: ANALYSIS_PROMPTS[mode],
                 text: text
-                // parseJSON: false (default) - C4 expects raw text/markdown for analysis
             })
             .then(result => {
-                // result is already parsed and validated by the API
-                // The API ensures result.success and result.text exist
-                const markdown = result.text;
-
-                // Convert the Markdown content into fully styled HTML
-                const htmlContent = marked.parse(markdown);
-
-                // Insert the formatted HTML into the output div
-                outputDiv.innerHTML = htmlContent;
-
-                // Show success status
-                showStatusMessage("✅ Analysis completed successfully!", "success");
+                document.getElementById("output").innerHTML = marked.parse(result.text);
+                showStatusMessage("Analysis complete!", "success");
             })
-            .catch(error => {
-                // Clear the analyzing message and show error status
-                outputDiv.textContent = "";
-                showStatusMessage("⚠️ " + error.message, "error");
+            .catch(err => {
+                showStatusMessage("Error analyzing text", "error");
             });
         };
 
         function loadRandomSample() {
-            const mode = document.getElementById("analysisMode").value;
-            const samples = document.querySelectorAll(`.sample-text[data-type="${mode}"]`);
-
-            if (samples.length === 0) {
-                // Fallback to plagiarism samples if mode has no samples
-                const fallbackSamples = document.querySelectorAll('.sample-text[data-type="plagiarism"]');
-                if (fallbackSamples.length > 0) {
-                    const randomIndex = Math.floor(Math.random() * fallbackSamples.length);
-                    quill.setText(fallbackSamples[randomIndex].textContent.trim());
-                }
-                return;
-            }
-
-            const randomIndex = Math.floor(Math.random() * samples.length);
-            quill.setText(samples[randomIndex].textContent.trim());
+            const samples = document.querySelectorAll('.sample-text[data-type="plagiarism"]');
+            const pick = Math.floor(Math.random() * samples.length);
+            quill.setText(samples[pick].textContent.trim());
         }
 
-        // Update sample when analysis mode changes
-        document.getElementById("analysisMode").onchange = function() {
-            loadRandomSample();
-        };
+        function showStatusMessage(msg, type) {
+            const el = document.getElementById("status-message");
+            el.textContent = msg;
+            el.style.display = "block";
+            setTimeout(() => el.style.display = "none", 3000);
+        }
+
+        loadRandomSample();
     });
 </script>
