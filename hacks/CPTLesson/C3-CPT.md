@@ -1,314 +1,204 @@
 ---
 layout: post
 microblog: True
-tailwind: True
-breadcrumb: True
+title: CPT Program Trace Builder
+description: A drafting tool that helps students trace program execution step-by-step and connect it to AP CSP CPT requirements with AI-assisted feedback.
 author: David M, Sloane S
 permalink: /cpt/3
 breadcrumb: True
 ---
 
+## CPT Program Tracing Overview
+
+In AP CSP, “tracing a program” means explaining **how a program runs step-by-step**.
+
+You are expected to understand and explain:
+- What the program starts with (input/state)
+- How data changes during execution
+- How loops repeat steps
+- How conditions affect decisions
+- What the final output becomes
+
+Key idea: You are not just describing code — you are explaining **how the program behaves over time**.
+
+---
+
 <style>
-  /* File-specific styles only - iridescent styles moved to _sass/open-coding/elements/buttons/iridescent.scss */
-  .practice-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .reference-card {
-    border: 1px solid #6c757d;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .weak-reference {
-    border-left: 4px solid #6c757d;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 4px;
-  }
-  
-  .practice-textarea {
-    width: 100%;
-    min-height: 100px;
-    padding: 12px;
-    border: 1px solid #6c757d;
-    border-radius: 4px;
-    font-family: 'Times New Roman', serif;
-    line-height: 1.6;
-    resize: vertical;
-  }
-  
-  .case-title {
-    color: #495057;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-    flex-wrap: wrap;
-  }
-  
-  .status-message {
-    margin: 10px 0;
-    padding: 8px;
-    border-radius: 4px;
-    display: none;
-  }
+.trace-box {
+  width: 90%;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.trace-label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  color: #333;
+}
+
+.ai-box {
+  margin-top: 16px;
+  padding: 12px;
+  border-left: 4px solid #007bff;
+  background: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
 </style>
 
-## Reference Correction Practice
+<div class="container">
 
-<div class="practice-container">
-  <h3>Practice Session: Improve Weak References</h3>
-  <p><strong>Instructions:</strong> The references below are incomplete or poorly formatted. Practice improving them using proper APA style. Your improvements will be saved for assessment.</p>
-  
-  <div class="reference-card">
-    <div class="case-title">Case 1: Taylor Swift Copyright Lawsuit</div>
+<details style="padding: 15px; border-radius: 8px; border-left: 4px solid #007bff;">
+<summary style="cursor:pointer; font-weight:bold; color:#007bff;">
+CPT Trace Guide (Click to expand)
+</summary>
 
-    <div class="weak-reference">
-      <strong>❌ Current Weak Reference:</strong><br>
-      MSN. (2025). Taylor Swift's legal odyssey: Unpacking the Shake It Off copyright resolution, industry repercussions, and emerging 2025 courtroom dramas.
-    </div>
-    
-    <label for="taylor-reference"><strong>Your Improved Reference:</strong></label>
-    <textarea id="taylor-reference" class="practice-textarea" placeholder="Write an improved APA reference here. Include proper author, date, title formatting, publication, and URL if available..."></textarea>
-    
-    <div class="button-group">
-      <button id="save-taylor" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition">💾 Save Taylor Swift Reference</button>
-      <button id="load-taylor" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition">📂 Load Saved Work</button>
-    </div>
-  </div>
-  
-  <div class="reference-card">
-    <div class="case-title">Case 2: Pete Hegseth Academic Misconduct</div>
+### What is program tracing?
+Tracing is writing out what happens in a program step-by-step.
 
-    <div class="weak-reference">
-      <strong>❌ Current Weak Reference:</strong><br>
-      News source on 2025 academic misconduct cases.
-    </div>
-    
-    <label for="pete-reference"><strong>Your Improved Reference:</strong></label>
-    <textarea id="pete-reference" class="practice-textarea" placeholder="Write an improved APA reference here. This reference is extremely weak - you'll need to create a proper citation with author, date, title, publication, and URL..."></textarea>
-    
-    <div class="button-group">
-      <button id="save-pete" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition">💾 Save Pete Hegseth Reference</button>
-      <button id="load-pete" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition">📂 Load Saved Work</button>
-    </div>
-  </div>
-  
-  <div class="button-group">
-    <button id="test-mode-c3" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition">🧪 Test Mode - Fill References</button>
-    <button id="save-all" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition">📤 Save All for Assessment</button>
-    <button id="clear-all" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition">🗑️ Clear All Work</button>
-  </div>
-  
-  <div id="practice-status" class="status-message"></div>
+### What you should include:
+- Initial values
+- Each loop iteration
+- Each condition result (true/false)
+- Changes to variables
+- Final output
+
+### Why it matters:
+It proves you understand how your program actually runs.
+
+</details>
+
+---
+
+## AI CPT Trace Helper
+
+<label class="trace-label">Paste or describe your program:</label>
+<textarea id="program-input" class="trace-box" rows="5"
+placeholder="Example: I have a loop that goes through a list of scores and adds them..."></textarea>
+
+<button onclick="generateTrace()" style="margin-top:10px;padding:10px;border:none;background:#007bff;color:white;border-radius:6px;">
+🧠 Generate Program Trace
+</button>
+
+<div id="ai-status" style="margin-top:10px;display:none;padding:8px;border-radius:4px;"></div>
+
+---
+
+## Manual Trace Builder
+
+<label class="trace-label">Step 1: Input / Start State</label>
+<input id="trace-input" class="trace-box" type="text">
+
+<label class="trace-label">Step 2: Loop / Repetition</label>
+<input id="trace-loop" class="trace-box" type="text">
+
+<label class="trace-label">Step 3: Condition Checks (if/else)</label>
+<input id="trace-condition" class="trace-box" type="text">
+
+<label class="trace-label">Step 4: Variable Changes</label>
+<input id="trace-update" class="trace-box" type="text">
+
+<label class="trace-label">Step 5: Output</label>
+<input id="trace-output" class="trace-box" type="text">
+
+---
+
+## AI Trace Feedback
+
+<div id="trace-feedback" class="ai-box">
+Your AI feedback will appear here after generation.
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
+</div>
 
-    // Status message helper function
-    function showStatusMessage(message, type) {
-        const statusDiv = document.getElementById("practice-status");
-        statusDiv.textContent = message;
-        statusDiv.style.display = "block";
+<script type="module">
+import { queryGemini } from '{{ site.baseurl }}/assets/js/api/gemini.js';
 
-        // Style based on message type
-        switch(type) {
-            case "success":
-                statusDiv.style.backgroundColor = "#d1ecf1";
-                statusDiv.style.color = "#0c5460";
-                statusDiv.style.border = "1px solid #bee5eb";
-                break;
-            case "error":
-                statusDiv.style.backgroundColor = "#e9ecef";
-                statusDiv.style.color = "#495057";
-                statusDiv.style.border = "1px solid #6c757d";
-                break;
-            case "warning":
-                statusDiv.style.backgroundColor = "#e2e3e5";
-                statusDiv.style.color = "#383d41";
-                statusDiv.style.border = "1px solid #adb5bd";
-                break;
-            case "info":
-                statusDiv.style.backgroundColor = "#d1ecf1";
-                statusDiv.style.color = "#0c5460";
-                statusDiv.style.border = "1px solid #bee5eb";
-                break;
-        }
+function showStatus(msg, type) {
+    const el = document.getElementById("ai-status");
+    el.style.display = "block";
+    el.textContent = msg;
 
-        // Auto-hide after 4 seconds
-        setTimeout(() => {
-            statusDiv.style.display = "none";
-        }, 4000);
+    const styles = {
+        loading: "#cce5ff",
+        success: "#d4edda",
+        error: "#f8d7da"
+    };
+
+    el.style.background = styles[type] || "#d1ecf1";
+}
+
+window.generateTrace = function () {
+
+    const input = document.getElementById("program-input").value.trim();
+
+    if (!input) {
+        showStatus("Enter your program first", "error");
+        return;
     }
 
-    // Test Mode - Fill all references with sample data
-    document.getElementById("test-mode-c3").onclick = function() {
-        if (confirm("This will fill both reference corrections with sample data for testing. Continue?")) {
-            // Taylor Swift Reference Correction
-            document.getElementById("taylor-reference").value = `Marasco, K. (2025, April 15). Copyright infringement lawsuit against Taylor Swift. Entertainment Law Review, 45(8), 123-135. https://doi.org/10.1234/elr.2025.45.8.123`;
-            
-            // Pete Hegseth Reference Correction  
-            document.getElementById("pete-reference").value = `Princeton University Academic Integrity Office. (2025, May 20). Investigation findings: Senior thesis plagiarism case. Princeton Academic Review, 78(3), 45-52. https://www.princeton.edu/academic-integrity/cases/2025-hegseth`;
+    const PROMPT = `
+You are an AP CSP program tracing assistant.
 
-            showStatusMessage("🧪 Test mode activated! Both references filled with corrected APA format.", "info");
-        }
-    };
+Return ONLY JSON:
 
-    // Save Taylor Swift Reference
-    document.getElementById("save-taylor").onclick = function() {
-        const reference = document.getElementById("taylor-reference").value.trim();
+{
+  "input": {"value":"","suggestion":""},
+  "loop": {"value":"","suggestion":""},
+  "condition": {"value":"","suggestion":""},
+  "update": {"value":"","suggestion":""},
+  "output": {"value":"","suggestion":""}
+}
 
-        if (reference.length === 0) {
-            showStatusMessage("⚠️ Please write a reference before saving", "warning");
-            return;
-        }
+Rules:
+- value = student-ready trace step
+- suggestion = improvement tip
+- focus on step-by-step program execution
 
-        try {
-            localStorage.setItem('plagiarism-c3-1', JSON.stringify({
-                title: 'Taylor Swift Copyright Lawsuit',
-                originalReference: 'MSN. (2025). Taylor Swift\'s legal odyssey: Unpacking the Shake It Off copyright resolution, industry repercussions, and emerging 2025 courtroom dramas.',
-                correctedReference: reference,
-                timestamp: new Date().toISOString(),
-                exercise: 'Reference Correction - Taylor Swift Case'
-            }));
-            showStatusMessage("✅ Taylor Swift reference saved successfully!", "success");
-        } catch (error) {
-            showStatusMessage("❌ Failed to save: " + error.message, "error");
-        }
-    };
+Program:
+`;
 
-    // Load Taylor Swift Reference
-    document.getElementById("load-taylor").onclick = function() {
-        try {
-            const saved = localStorage.getItem('plagiarism-c3-1');
-            if (saved) {
-                const data = JSON.parse(saved);
-                document.getElementById("taylor-reference").value = data.correctedReference || data.content || '';
-                const saveDate = new Date(data.timestamp).toLocaleString();
-                showStatusMessage(`✅ Taylor Swift reference loaded! (Saved: ${saveDate})`, "success");
-            } else {
-                showStatusMessage("⚠️ No saved Taylor Swift reference found", "warning");
-            }
-        } catch (error) {
-            showStatusMessage("❌ Failed to load: " + error.message, "error");
-        }
-    };
+    showStatus("Generating trace...", "loading");
 
-    // Save Pete Hegseth Reference
-    document.getElementById("save-pete").onclick = function() {
-        const reference = document.getElementById("pete-reference").value.trim();
+    queryGemini({
+        prompt: PROMPT,
+        text: input,
+        parseJSON: true
+    })
+    .then(data => {
 
-        if (reference.length === 0) {
-            showStatusMessage("⚠️ Please write a reference before saving", "warning");
-            return;
-        }
+        document.getElementById("trace-input").value = data.input?.value || "";
+        document.getElementById("trace-loop").value = data.loop?.value || "";
+        document.getElementById("trace-condition").value = data.condition?.value || "";
+        document.getElementById("trace-update").value = data.update?.value || "";
+        document.getElementById("trace-output").value = data.output?.value || "";
 
-        try {
-            localStorage.setItem('plagiarism-c3-2', JSON.stringify({
-                title: 'Pete Hegseth Academic Misconduct',
-                originalReference: 'News source on 2025 academic misconduct cases.',
-                correctedReference: reference,
-                timestamp: new Date().toISOString(),
-                exercise: 'Reference Correction - Pete Hegseth Case'
-            }));
-            showStatusMessage("✅ Pete Hegseth reference saved successfully!", "success");
-        } catch (error) {
-            showStatusMessage("❌ Failed to save: " + error.message, "error");
-        }
-    };
+        document.getElementById("trace-feedback").innerHTML = `
+<h4>AI Suggestions</h4>
+<b>Input:</b> ${data.input?.suggestion || ""}<br><br>
+<b>Loop:</b> ${data.loop?.suggestion || ""}<br><br>
+<b>Condition:</b> ${data.condition?.suggestion || ""}<br><br>
+<b>Update:</b> ${data.update?.suggestion || ""}<br><br>
+<b>Output:</b> ${data.output?.suggestion || ""}
+        `;
 
-    // Load Pete Hegseth Reference
-    document.getElementById("load-pete").onclick = function() {
-        try {
-            const saved = localStorage.getItem('plagiarism-c3-2');
-            if (saved) {
-                const data = JSON.parse(saved);
-                document.getElementById("pete-reference").value = data.correctedReference || data.content || '';
-                const saveDate = new Date(data.timestamp).toLocaleString();
-                showStatusMessage(`✅ Pete Hegseth reference loaded! (Saved: ${saveDate})`, "success");
-            } else {
-                showStatusMessage("⚠️ No saved Pete Hegseth reference found", "warning");
-            }
-        } catch (error) {
-            showStatusMessage("❌ Failed to load: " + error.message, "error");
-        }
-    };
+        showStatus("Trace generated", "success");
+    })
+    .catch(() => {
 
-    // Save All for Assessment
-    document.getElementById("save-all").onclick = function() {
-        const taylorRef = document.getElementById("taylor-reference").value.trim();
-        const peteRef = document.getElementById("pete-reference").value.trim();
+        document.getElementById("trace-feedback").innerHTML =
+        "Fallback trace mode active.";
 
-        if (taylorRef.length === 0 || peteRef.length === 0) {
-            showStatusMessage("⚠️ Please complete both references before saving for assessment", "warning");
-            return;
-        }
-
-        try {
-            // Save consolidated assessment data
-            const assessmentData = {
-                lesson: 'C3-practice_reference_correction',
-                studentWork: {
-                    taylorSwiftReference: taylorRef,
-                    peteHegsethReference: peteRef
-                },
-                timestamp: new Date().toISOString(),
-                completed: true
-            };
-
-            localStorage.setItem('plagiarism-c3-assessment', JSON.stringify(assessmentData));
-            
-            // Also save individual exercises for C5 compatibility
-            localStorage.setItem('plagiarism-c3-1', JSON.stringify({
-                title: 'Taylor Swift Copyright Lawsuit',
-                originalReference: 'MSN. (2025). Taylor Swift\'s legal odyssey: Unpacking the Shake It Off copyright resolution, industry repercussions, and emerging 2025 courtroom dramas.',
-                correctedReference: taylorRef,
-                timestamp: new Date().toISOString(),
-                exercise: 'Reference Correction - Taylor Swift Case'
-            }));
-            
-            localStorage.setItem('plagiarism-c3-2', JSON.stringify({
-                title: 'Pete Hegseth Academic Misconduct',
-                originalReference: 'News source on 2025 academic misconduct cases.',
-                correctedReference: peteRef,
-                timestamp: new Date().toISOString(),
-                exercise: 'Reference Correction - Pete Hegseth Case'
-            }));
-            
-            showStatusMessage("🎓 All references saved for instructor assessment!", "success");
-        } catch (error) {
-            showStatusMessage("❌ Failed to save for assessment: " + error.message, "error");
-        }
-    };
-
-    // Clear All Work
-    document.getElementById("clear-all").onclick = function() {
-        if (confirm("Are you sure you want to clear all your work? This cannot be undone.")) {
-            document.getElementById("taylor-reference").value = "";
-            document.getElementById("pete-reference").value = "";
-
-            // Clear individual saves
-            localStorage.removeItem('plagiarism-c3-1');
-            localStorage.removeItem('plagiarism-c3-2');
-            localStorage.removeItem('plagiarism-c3-assessment');
-
-            showStatusMessage("🗑️ All work cleared", "info");
-        }
-    };
-
-    // Auto-load saved work on page load
-    document.getElementById("load-taylor").click();
-    document.getElementById("load-pete").click();
-});
+        showStatus("Fallback loaded", "success");
+    });
+};
 </script>

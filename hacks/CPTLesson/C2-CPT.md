@@ -71,8 +71,8 @@ Key idea: You are graded on whether these parts are clearly shown and explained.
     <ol>
       <li>Write your CPT project idea</li>
       <li>Click generate to auto-fill structure</li>
-      <li>Review and edit each field</li>
-      <li>Save your progress</li>
+      <li>Review each field + AI suggestions</li>
+      <li>Improve and refine your CPT design</li>
     </ol>
 
     <h4>CPT Requirements</h4>
@@ -139,10 +139,7 @@ Key idea: You are graded on whether these parts are clearly shown and explained.
   <label class="apa-tool-label">Algorithm:</label>
   <input class="apa-tool-input" id="cpt-algorithm" type="text">
 
-  <div class="apa-tool-output" id="cpt-output-box">
-    <strong>Generated CPT Layout:</strong><br>
-    <span id="cpt-layout-text"></span>
-  </div>
+  <div class="apa-tool-output" id="cpt-layout-text"></div>
 
 </div>
 
@@ -176,26 +173,34 @@ function showCPTStatus(message, type) {
 window.generateCPTStructure = function () {
 
     const idea = document.getElementById("user-provided-quote")?.value.trim();
+
     if (!idea) {
         showCPTStatus("⚠️ Enter your CPT idea first", "error");
         return;
     }
 
     const PROMPT = `
-Return ONLY JSON with:
-input, output, list, procedure, algorithm.
+You are an AP CSP CPT assistant.
+
+Return ONLY JSON:
+
+{
+  "input": {"value":"","suggestion":""},
+  "output": {"value":"","suggestion":""},
+  "list": {"value":"","suggestion":""},
+  "procedure": {"value":"","suggestion":""},
+  "algorithm": {"value":"","suggestion":""}
+}
 
 Rules:
-- input = user interaction
-- output = result
-- list = stored data
-- procedure = function with parameter
-- algorithm = must include loop + if + sequencing
+- value = student-ready CPT answer
+- suggestion = improvement tip
+- must match AP CSP requirements
 
 Project:
 `;
 
-    showCPTStatus("🧠 Generating CPT structure...", "loading");
+    showCPTStatus("🧠 Generating AI CPT structure...", "loading");
 
     queryGemini({
         prompt: PROMPT,
@@ -209,29 +214,40 @@ Project:
             if (el && val) el.value = val;
         };
 
-        set("cpt-input", data.input);
-        set("cpt-output", data.output);
-        set("cpt-list", data.list);
-        set("cpt-procedure", data.procedure);
-        set("cpt-algorithm", data.algorithm);
+        set("cpt-input", data.input?.value);
+        set("cpt-output", data.output?.value);
+        set("cpt-list", data.list?.value);
+        set("cpt-procedure", data.procedure?.value);
+        set("cpt-algorithm", data.algorithm?.value);
 
-        showCPTStatus("✅ CPT generated", "success");
+        document.getElementById("cpt-layout-text").innerHTML = `
+<h4>🧠 AI Suggestions</h4>
+
+<b>Input:</b> ${data.input?.suggestion || ""}<br><br>
+<b>Output:</b> ${data.output?.suggestion || ""}<br><br>
+<b>List:</b> ${data.list?.suggestion || ""}<br><br>
+<b>Procedure:</b> ${data.procedure?.suggestion || ""}<br><br>
+<b>Algorithm:</b> ${data.algorithm?.suggestion || ""}
+        `;
+
+        showCPTStatus("✅ AI CPT structure generated", "success");
     })
     .catch(() => {
 
-        document.getElementById("cpt-input").value = "User interacts with system";
+        document.getElementById("cpt-input").value = "User interaction input";
         document.getElementById("cpt-output").value = "System displays results";
-        document.getElementById("cpt-list").value = "Stores user data";
+        document.getElementById("cpt-list").value = "Stores multiple entries";
         document.getElementById("cpt-procedure").value = "function process(input)";
         document.getElementById("cpt-algorithm").value =
 `FOR each item:
  IF condition:
   update result
- ENDIF
-ENDFOR`;
+END`;
+
+        document.getElementById("cpt-layout-text").innerHTML =
+"Fallback mode active.";
 
         showCPTStatus("📚 Fallback loaded", "success");
     });
 };
-
 </script>
