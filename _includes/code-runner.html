@@ -22,10 +22,10 @@
 
   <div class="editor-container">
     <div class="control-panel">
-      <button class="runBtn" title="Run">▶</button>
-      <button class="copyBtn" title="Copy Code">⎘</button>
-      <button class="saveBtn" title="Save Code">💾</button>
-      <button class="clearStorageBtn" title="Clear Storage">🗑</button>
+      <button class="runBtn" title="Run">Run</button>
+      <button class="copyBtn" title="Copy Code">Copy</button>
+      <button class="saveBtn" title="Save Code">Save</button>
+      <button class="clearStorageBtn" title="Clear Storage">Clear</button>
       <select class="languageSelect">
         <option value="python">Python</option>
         <option value="java">Java</option>
@@ -48,13 +48,14 @@
   <div class="output-container">
     <div class="control-panel">
       <span>Output</span>
-      <button class="copyOutputBtn" title="Copy Output">⎘</button>
+      <button class="copyOutputBtn" title="Copy Output">Copy Output</button>
     </div>
     <div class="output-content">Click "Run" in code control panel to see output ...</div>
     <div class="control-panel">
       <span class="execTime"></span>
     </div>
   </div>
+
 </div>
 
 <script type="module">
@@ -144,7 +145,7 @@ import { pythonURI, javaURI, fetchOptions } from '{{site.baseurl}}/assets/js/api
     execTimeSpan.textContent = '';
     const btn = container.querySelector('.clearStorageBtn');
     const originalText = btn.textContent;
-    btn.textContent = '✔';
+    btn.textContent = 'Saved';
     setTimeout(() => {
       btn.textContent = originalText;
     }, 2000);
@@ -156,7 +157,7 @@ import { pythonURI, javaURI, fetchOptions } from '{{site.baseurl}}/assets/js/api
     localStorage.setItem(storageKey, code);
     const btn = container.querySelector('.saveBtn');
     const originalText = btn.textContent;
-    btn.textContent = '✔';
+    btn.textContent = 'Saved';
     setTimeout(() => {
       btn.textContent = originalText;
     }, 2000);
@@ -168,7 +169,7 @@ import { pythonURI, javaURI, fetchOptions } from '{{site.baseurl}}/assets/js/api
     navigator.clipboard.writeText(code).then(() => {
       const btn = container.querySelector('.copyBtn');
       const originalText = btn.textContent;
-      btn.textContent = '✔';
+      btn.textContent = 'Saved';
       setTimeout(() => {
         btn.textContent = originalText;
       }, 2000);
@@ -181,7 +182,7 @@ import { pythonURI, javaURI, fetchOptions } from '{{site.baseurl}}/assets/js/api
     const icon = container.querySelector('.copyOutputBtn');
     const original = icon.textContent;
     navigator.clipboard.writeText(output).then(() => {
-      icon.textContent = '✔';
+      icon.textContent = 'Copy';
       setTimeout(() => {
         icon.textContent = original;
       }, 1200);

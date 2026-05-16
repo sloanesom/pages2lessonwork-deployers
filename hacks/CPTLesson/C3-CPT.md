@@ -1,4 +1,4 @@
----
+ ---
 layout: post
 microblog: True
 title: CPT Program Trace Builder
@@ -22,69 +22,62 @@ You should describe:
 Key idea: You are tracking execution over time, not just describing code.
 
 ---
-
 <style>
-/* Fix text visibility */
+/* Global text: black */
 body, .container, .container * {
-  color: #000;
-}
-
-.CodeMirror, .CodeMirror * {
-  color: inherit !important;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+  color: #000 !important;
   font-family: Arial, sans-serif;
 }
 
-.section {
-  margin-top: 16px;
-  padding: 16px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  background: #f8f8f8;
+/* CodeMirror: white background, black text */
+.CodeMirror,
+.CodeMirror * {
+  background: #fff !important;
+  color: #000 !important;
 }
 
+/* CodeMirror gutters (line numbers) */
+.CodeMirror-gutters {
+  background: #fff !important;
+  border-right: 1px solid #ccc !important;
+}
+
+.CodeMirror-linenumber {
+  color: #000 !important;
+}
+
+/* Textareas: white background, black text */
 textarea {
-  width: 100%;
-  min-height: 120px;
-  padding: 10px;
-  margin-top: 6px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
   background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  border-radius: 6px;
 }
 
-label {
-  font-weight: bold;
-  display: block;
-  margin-top: 10px;
-}
-
+/* Buttons: simple gray */
 button {
-  padding: 10px 14px;
+  background: #e0e0e0;
+  color: #000;
   border: none;
-  border-radius: 8px;
+  padding: 10px 14px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-right: 8px;
-  margin-top: 10px;
   font-weight: bold;
 }
 
-.save {
+/* Green Save button (your only colored element) */
+button.save {
   background: #28a745;
-  color: white;
+  color: #fff;
 }
 </style>
 
 <div class="container">
 
 <div class="section">
-<h3>📘 CPT Trace Guide</h3>
+<h3>CPT Trace Guide</h3>
 <ul>
   <li>Input</li>
   <li>Loop</li>
@@ -101,7 +94,7 @@ button {
 </div>
 
 <div class="section">
-<h3>🧾 Finalized Trace Box</h3>
+<h3>Finalized Trace Box</h3>
 {% include code-runner.html
    runner_id="trace_final_runner"
    language="python"
@@ -110,7 +103,7 @@ button {
 </div>
 
 <div class="section">
-<h3>✍️ Program Trace</h3>
+<h3>Program Trace</h3>
 
 <label>Input / Start State</label>
 {% include code-runner.html
@@ -159,8 +152,7 @@ function save(id) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  ["programInput"]
-  .forEach(id => {
+  ["programInput"].forEach(id => {
     const saved = localStorage.getItem(id);
     if (saved) document.getElementById(id).value = saved;
   });
