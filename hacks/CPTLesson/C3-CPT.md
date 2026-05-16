@@ -24,8 +24,15 @@ Key idea: You are not just describing code — you are explaining **how the prog
 ---
 
 <style>
-.trace-box {
-  width: 90%;
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.box {
+  width: 100%;
   padding: 10px;
   margin: 6px 0;
   border-radius: 6px;
@@ -33,89 +40,115 @@ Key idea: You are not just describing code — you are explaining **how the prog
   font-size: 14px;
 }
 
-.trace-label {
+.label {
   font-weight: bold;
   margin-top: 10px;
   display: block;
-  color: #333;
+}
+
+.section {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+}
+
+button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #0056b3;
 }
 
 .ai-box {
-  margin-top: 16px;
+  margin-top: 15px;
   padding: 12px;
   border-left: 4px solid #007bff;
   background: #f8f9fa;
-  font-family: Arial, sans-serif;
+  white-space: pre-wrap;
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+.small {
+  font-size: 13px;
+  color: #555;
 }
 </style>
 
 <div class="container">
 
-<details style="padding: 15px; border-radius: 8px; border-left: 4px solid #007bff;">
-<summary style="cursor:pointer; font-weight:bold; color:#007bff;">
-CPT Trace Guide (Click to expand)
+<!-- ================= GUIDE ================= -->
+<div class="section">
+<details>
+<summary style="cursor:pointer;font-weight:bold;color:#007bff;">
+📘 CPT Trace Guide (Click to expand)
 </summary>
 
-### What is program tracing?
-Tracing is writing out what happens in a program step-by-step.
+### What is tracing?
+Tracing explains how a program runs step-by-step.
 
-### What you should include:
-- Initial values
-- Each loop iteration
-- Each condition result (true/false)
-- Changes to variables
+### You must include:
+- Starting values
+- Loop iterations
+- Condition results
+- Variable updates
 - Final output
 
-### Why it matters:
-It proves you understand how your program actually runs.
-
 </details>
+</div>
 
----
+<!-- ================= AI INPUT ================= -->
+<div class="section">
 
-## AI CPT Trace Helper
+<h3>🧠 AI Program Trace Generator</h3>
 
-<label class="trace-label">Paste or describe your program:</label>
-<textarea id="program-input" class="trace-box" rows="5"
-placeholder="Example: I have a loop that goes through a list of scores and adds them..."></textarea>
+<textarea id="programInput" class="box" rows="5"
+placeholder="Paste or describe your program logic here..."></textarea>
 
-<button onclick="generateTrace()" style="margin-top:10px;padding:10px;border:none;background:#007bff;color:white;border-radius:6px;">
-🧠 Generate Program Trace
-</button>
+<button onclick="generateTrace()">Generate Trace</button>
 
-<div id="ai-status" style="margin-top:10px;display:none;padding:8px;border-radius:4px;"></div>
+<div id="statusBox" class="ai-box" style="display:none;"></div>
 
----
+</div>
 
-## Manual Trace Builder
+<!-- ================= MANUAL TRACE ================= -->
+<div class="section">
 
-<label class="trace-label">Step 1: Input / Start State</label>
-<input id="trace-input" class="trace-box" type="text">
+<h3>✍️ Manual Trace Builder</h3>
 
-<label class="trace-label">Step 2: Loop / Repetition</label>
-<input id="trace-loop" class="trace-box" type="text">
+<label class="label">Input / Start State</label>
+<input id="inputState" class="box" type="text">
 
-<label class="trace-label">Step 3: Condition Checks (if/else)</label>
-<input id="trace-condition" class="trace-box" type="text">
+<label class="label">Loop Behavior</label>
+<input id="loopState" class="box" type="text">
 
-<label class="trace-label">Step 4: Variable Changes</label>
-<input id="trace-update" class="trace-box" type="text">
+<label class="label">Condition (if/else)</label>
+<input id="conditionState" class="box" type="text">
 
-<label class="trace-label">Step 5: Output</label>
-<input id="trace-output" class="trace-box" type="text">
+<label class="label">Variable Updates</label>
+<input id="updateState" class="box" type="text">
 
----
+<label class="label">Final Output</label>
+<input id="outputState" class="box" type="text">
 
-## AI Trace Feedback
+</div>
 
-<div id="trace-feedback" class="ai-box">
-Your AI feedback will appear here after generation.
+<!-- ================= FEEDBACK ================= -->
+<div class="section">
+
+<h3>📊 AI Feedback</h3>
+
+<div id="feedbackBox" class="ai-box">
+AI feedback will appear here after generation.
+</div>
+
 </div>
 
 </div>
@@ -123,51 +156,51 @@ Your AI feedback will appear here after generation.
 <script type="module">
 import { queryGemini } from '{{ site.baseurl }}/assets/js/api/gemini.js';
 
-function showStatus(msg, type) {
-    const el = document.getElementById("ai-status");
+function setStatus(msg, type="info") {
+    const el = document.getElementById("statusBox");
     el.style.display = "block";
     el.textContent = msg;
 
-    const styles = {
-        loading: "#cce5ff",
+    const colors = {
+        info: "#d1ecf1",
         success: "#d4edda",
         error: "#f8d7da"
     };
 
-    el.style.background = styles[type] || "#d1ecf1";
+    el.style.background = colors[type] || "#d1ecf1";
 }
 
 window.generateTrace = function () {
 
-    const input = document.getElementById("program-input").value.trim();
+    const input = document.getElementById("programInput").value.trim();
 
     if (!input) {
-        showStatus("Enter your program first", "error");
+        setStatus("Please enter program description first.", "error");
         return;
     }
 
     const PROMPT = `
-You are an AP CSP program tracing assistant.
+You are an AP CSP Program Trace Assistant.
 
-Return ONLY JSON:
+Return ONLY valid JSON:
 
 {
-  "input": {"value":"","suggestion":""},
-  "loop": {"value":"","suggestion":""},
-  "condition": {"value":"","suggestion":""},
-  "update": {"value":"","suggestion":""},
-  "output": {"value":"","suggestion":""}
+  "input": {"value":"","feedback":""},
+  "loop": {"value":"","feedback":""},
+  "condition": {"value":"","feedback":""},
+  "update": {"value":"","feedback":""},
+  "output": {"value":"","feedback":""}
 }
 
 Rules:
 - value = student-ready trace step
-- suggestion = improvement tip
-- focus on step-by-step program execution
+- feedback = improvement explanation
+- keep steps realistic and AP CSP aligned
 
 Program:
 `;
 
-    showStatus("Generating trace...", "loading");
+    setStatus("Generating trace...", "info");
 
     queryGemini({
         prompt: PROMPT,
@@ -176,29 +209,28 @@ Program:
     })
     .then(data => {
 
-        document.getElementById("trace-input").value = data.input?.value || "";
-        document.getElementById("trace-loop").value = data.loop?.value || "";
-        document.getElementById("trace-condition").value = data.condition?.value || "";
-        document.getElementById("trace-update").value = data.update?.value || "";
-        document.getElementById("trace-output").value = data.output?.value || "";
+        document.getElementById("inputState").value = data.input?.value || "";
+        document.getElementById("loopState").value = data.loop?.value || "";
+        document.getElementById("conditionState").value = data.condition?.value || "";
+        document.getElementById("updateState").value = data.update?.value || "";
+        document.getElementById("outputState").value = data.output?.value || "";
 
-        document.getElementById("trace-feedback").innerHTML = `
-<h4>AI Suggestions</h4>
-<b>Input:</b> ${data.input?.suggestion || ""}<br><br>
-<b>Loop:</b> ${data.loop?.suggestion || ""}<br><br>
-<b>Condition:</b> ${data.condition?.suggestion || ""}<br><br>
-<b>Update:</b> ${data.update?.suggestion || ""}<br><br>
-<b>Output:</b> ${data.output?.suggestion || ""}
+        document.getElementById("feedbackBox").innerHTML = `
+<b>Input:</b> ${data.input?.feedback || ""}<br><br>
+<b>Loop:</b> ${data.loop?.feedback || ""}<br><br>
+<b>Condition:</b> ${data.condition?.feedback || ""}<br><br>
+<b>Update:</b> ${data.update?.feedback || ""}<br><br>
+<b>Output:</b> ${data.output?.feedback || ""}
         `;
 
-        showStatus("Trace generated", "success");
+        setStatus("Trace generated successfully.", "success");
     })
-    .catch(() => {
+    .catch(err => {
 
-        document.getElementById("trace-feedback").innerHTML =
-        "Fallback trace mode active.";
+        document.getElementById("feedbackBox").innerHTML =
+            "AI unavailable. Please use manual trace section.";
 
-        showStatus("Fallback loaded", "success");
+        setStatus("Fallback mode activated.", "error");
     });
 };
 </script>
