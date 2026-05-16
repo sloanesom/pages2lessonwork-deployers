@@ -95,27 +95,65 @@ button.clear { background: #dc3545; color: #fff; }
   </div>
 
   <div class="section">
-    <h3>🧠 CPT Idea</h3>
+    <h3>CPT Purpose</h3>
     <textarea id="ideaInput"></textarea>
   </div>
 
   <div class="section">
-    <h3>✍️ CPT Components</h3>
+    <h3>Full Program</h3>
+    {% include code-runner.html
+       runner_id="full_program_runner"
+       language="python"
+       code=""
+    %}
+  </div>
+
+  <div class="section">
+    <h3>CPT Components</h3>
 
     <label for="inputField">Input</label>
-    <textarea id="inputField"></textarea>
+    {% include code-runner.html
+       runner_id="input_runner"
+       language="python"
+       code=""
+    %}
 
     <label for="outputField">Output</label>
-    <textarea id="outputField"></textarea>
+    {% include code-runner.html
+       runner_id="output_runner"
+       language="python"
+       code=""
+    %}
 
     <label for="listField">List</label>
-    <textarea id="listField"></textarea>
+    {% include code-runner.html
+       runner_id="list_runner"
+       language="python"
+       code=""
+    %}
 
     <label for="procedureField">Procedure</label>
-    <textarea id="procedureField"></textarea>
+    {% include code-runner.html
+       runner_id="procedure_runner"
+       language="python"
+       code=""
+    %}
 
     <label for="algorithmField">Algorithm</label>
-    <textarea id="algorithmField"></textarea>
+    {% include code-runner.html
+       runner_id="algorithm_runner"
+       language="python"
+       code=""
+    %}
+  </div>
+
+  <div class="section">
+    <h3>🧾 Final Drafting Box</h3>
+    {% include code-runner.html
+       runner_id="final_draft_runner"
+       language="python"
+       code=""
+    %}
   </div>
 
   <div class="section">
@@ -134,12 +172,8 @@ button.clear { background: #dc3545; color: #fff; }
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const fields = {
-    idea: "ideaInput",
-    input: "inputField",
-    output: "outputField",
-    list: "listField",
-    procedure: "procedureField",
-    algorithm: "algorithmField"
+    idea: "ideaInput"
+    // Note: original component textareas removed; idea still supported.
   };
 
   function getValues() {
