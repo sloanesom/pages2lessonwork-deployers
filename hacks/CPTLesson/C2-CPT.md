@@ -136,46 +136,45 @@ button {
 
 <script>
 function saveCPT() {
-  const data = {
-    idea: ideaInput.value,
-    input: inputField.value,
-    output: outputField.value,
-    list: listField.value,
-    procedure: procedureField.value,
-    algorithm: algorithmField.value
-  };
+  localStorage.setItem("cpt_data", JSON.stringify({
+    idea: document.getElementById("ideaInput").value,
+    input: document.getElementById("inputField").value,
+    output: document.getElementById("outputField").value,
+    list: document.getElementById("listField").value,
+    procedure: document.getElementById("procedureField").value,
+    algorithm: document.getElementById("algorithmField").value
+  }));
 
-  localStorage.setItem("cpt_data", JSON.stringify(data));
-  status.innerText = "Saved successfully.";
+  document.getElementById("status").innerText = "Saved successfully.";
 }
 
 function loadCPT() {
   const data = JSON.parse(localStorage.getItem("cpt_data"));
   if (!data) {
-    status.innerText = "No saved data.";
+    document.getElementById("status").innerText = "No saved data.";
     return;
   }
 
-  ideaInput.value = data.idea || "";
-  inputField.value = data.input || "";
-  outputField.value = data.output || "";
-  listField.value = data.list || "";
-  procedureField.value = data.procedure || "";
-  algorithmField.value = data.algorithm || "";
+  document.getElementById("ideaInput").value = data.idea || "";
+  document.getElementById("inputField").value = data.input || "";
+  document.getElementById("outputField").value = data.output || "";
+  document.getElementById("listField").value = data.list || "";
+  document.getElementById("procedureField").value = data.procedure || "";
+  document.getElementById("algorithmField").value = data.algorithm || "";
 
-  status.innerText = "Loaded successfully.";
+  document.getElementById("status").innerText = "Loaded successfully.";
 }
 
 function clearCPT() {
   localStorage.removeItem("cpt_data");
 
-  ideaInput.value = "";
-  inputField.value = "";
-  outputField.value = "";
-  listField.value = "";
-  procedureField.value = "";
-  algorithmField.value = "";
+  document.getElementById("ideaInput").value = "";
+  document.getElementById("inputField").value = "";
+  document.getElementById("outputField").value = "";
+  document.getElementById("listField").value = "";
+  document.getElementById("procedureField").value = "";
+  document.getElementById("algorithmField").value = "";
 
-  status.innerText = "Cleared.";
+  document.getElementById("status").innerText = "Cleared.";
 }
 </script>
