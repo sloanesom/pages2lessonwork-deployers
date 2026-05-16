@@ -47,7 +47,9 @@ Your program must include:
   color: #ffffff !important;
 }
 
-/* PAGE STYLING (unchanged) */
+/* PAGE STYLING — NOW FULL DARK MODE */
+
+/* Container stays normal so layout doesn’t break */
 .container {
   max-width: 900px;
   margin: auto;
@@ -55,32 +57,39 @@ Your program must include:
   font-family: Arial, sans-serif;
 }
 
+/* ALL SECTION BOXES → BLACK */
 .section {
   margin-top: 16px;
   padding: 16px;
   border-radius: 10px;
-  border: 1px solid #ddd;
-  background: #f8f8f8;
+  border: 1px solid #444;
+  background: #000000 !important;
+  color: #ffffff !important;
 }
 
+/* TEXTAREAS → BLACK BOXES + WHITE TEXT */
 textarea {
   width: 100%;
   min-height: 120px;
   padding: 10px;
   margin-top: 6px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
   font-size: 14px;
-  background: #fff;
+  background: #000000 !important;
+  color: #ffffff !important;
   resize: vertical;
 }
 
+/* LABELS → WHITE */
 label {
   font-weight: bold;
   display: block;
   margin-top: 10px;
+  color: #ffffff !important;
 }
 
+/* BUTTONS — KEEP ORIGINAL COLORS */
 button {
   padding: 10px 14px;
   border: none;
@@ -95,9 +104,11 @@ button.save { background: #28a745; color: #fff; }
 button.load { background: #007bff; color: #fff; }
 button.clear { background: #dc3545; color: #fff; }
 
+/* STATUS TEXT → WHITE */
 #status {
   margin-top: 10px;
   font-size: 14px;
+  color: #ffffff !important;
 }
 
 </style>
