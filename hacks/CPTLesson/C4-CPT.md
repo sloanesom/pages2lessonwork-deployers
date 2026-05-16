@@ -46,12 +46,6 @@ button:hover { background:#0056b3; }
 Trace program execution, identify inputs/outputs, and explain list behavior step-by-step.
 </details>
 
-<select id="mode-1">
-  <option value="trace">Execution Trace</option>
-  <option value="io">Inputs & Outputs</option>
-  <option value="logic">Logic Flow</option>
-</select>
-
 <div id="editor-1" style="height:200px;"></div>
 
 <button id="check-1">Review FRQ 1</button>
@@ -59,7 +53,12 @@ Trace program execution, identify inputs/outputs, and explain list behavior step
 <div id="output-1"></div>
 
 <div class="sample-text" data-type="trace">
-A program stores a list of quiz scores [72, 88, 95]. It loops through the list, calculates the average, and prints whether the student passed.
+A program stores a list of quiz scores: [72, 88, 95, 61, 84]
+
+The program loops through each value in the list. For each score, it prints "PASS" if the score is greater than or equal to 70, otherwise it prints "FAIL".
+
+Question:
+Describe step-by-step how the program processes the list and determine the exact output that is produced.
 </div>
 
 <div class="sample-text" data-type="io">
@@ -113,7 +112,17 @@ document.getElementById("check-1").onclick = function() {
 <div id="output-2"></div>
 
 <div class="sample-text" data-type="list">
-A program stores student names and scores in a list, then creates a new list of students who scored above 80 using iteration.
+A program is designed to analyze daily temperatures stored in a list called temps.
+
+The program:
+- Stores temperatures in a list called temps
+- Creates a second list called hot_days
+- Loops through temps
+- Adds temperatures greater than 30 to hot_days
+- Outputs the number of items in hot_days
+
+Question:
+Explain how the program uses a list, iteration, and selection to process the data and what the final output represents.
 </div>
 
 <div class="sample-text" data-type="filter">
@@ -167,7 +176,17 @@ document.getElementById("check-2").onclick = function() {
 <div id="output-3"></div>
 
 <div class="sample-text" data-type="procedure">
-A program defines a procedure that calculates a discount based on user type and purchase amount.
+A programmer creates a procedure to calculate a discounted price for items in a shopping app.
+
+The procedure is defined as:
+
+procedure applyDiscount(price, discountRate)
+    return price - (price * discountRate)
+
+The program uses this procedure multiple times with different values for price and discountRate.
+
+Question:
+Explain how this procedure works, how parameters are used, and why using a procedure improves the design of the program.
 </div>
 
 <div class="sample-text" data-type="abstraction">
