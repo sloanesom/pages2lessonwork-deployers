@@ -1,8 +1,8 @@
 ---
 layout: post
 microblog: True
-title: CPT Project Layout Builder
-description: A drafting tool that helps students map their CPT project to AP CSP requirements (input, output, lists, procedures, and algorithms).
+title: CPT Project Layout Builder (Enhanced)
+description: A structured AP CSP CPT drafting tool that maps student ideas into required components with guided AI feedback.
 author: David M, Sloane S
 permalink: /cpt/2
 breadcrumb: True
@@ -10,197 +10,220 @@ breadcrumb: True
 
 ## CPT Requirements Overview
 
-The Create Performance Task (CPT) requires you to build a program and explain how it works.
+The Create Performance Task (CPT) requires a program that demonstrates core computational thinking concepts.
 
-Your program MUST include:
-- Input: user interaction (typing, clicking, etc.)
-- Output: result displayed to the user
-- List: used to store multiple related pieces of data
-- Procedure: a function with at least one parameter (variable that receives input)
-- Algorithm: must include sequencing, selection (if), and iteration (loop)
+Your program must include:
 
-Key idea: You are graded on whether these parts are clearly shown and explained.
+- **Input**: user interaction (typing, clicking, selecting)
+- **Output**: program-generated result
+- **List**: collection of multiple data items
+- **Procedure**: reusable function with at least one parameter
+- **Algorithm**: includes sequencing, selection (if), and iteration (loop)
+
+Key idea: You are evaluated on whether these components are clearly implemented and explained.
 
 ---
 
 <style>
-  .apa-tool-label {
-    display: block;
-    margin-top: 8px;
-    font-weight: bold;
-    color: #333;
-  }
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
 
-  .apa-tool-input {
-    width: 90%;
-    padding: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-  }
+.section {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background: #fafafa;
+}
 
-  .apa-tool-output {
-    margin-top: 16px;
-    border-left: 4px solid #007bff;
-    padding: 15px;
-    font-family: 'Times New Roman', serif;
-    line-height: 1.6;
-    border-radius: 4px;
-  }
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
 
-  .citation-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.ai-box {
+  margin-top: 12px;
+  padding: 12px;
+  border-left: 4px solid #007bff;
+  background: #f8f9fa;
+  white-space: pre-wrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+small {
+  color: #666;
+  font-size: 13px;
+}
 </style>
 
-<details style="padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #007bff ">
-  <summary style="cursor: pointer; font-weight: bold; color: #007bff; font-size: 18px;">
-    CPT Builder Guide (Click to expand)
-  </summary>
+<div class="container">
 
-  <div style="margin-top: 15px;">
-    <h4>Purpose</h4>
-    <p>This tool helps you break down your CPT project into AP CSP requirements.</p>
+<!-- ================= GUIDE ================= -->
+<div class="section">
+<details>
+<summary style="cursor:pointer;color:#007bff;font-weight:bold;">
+📘 CPT Builder Guide
+</summary>
 
-    <h4>How to Use</h4>
-    <ol>
-      <li>Write your CPT project idea</li>
-      <li>Click generate to auto-fill structure</li>
-      <li>Review each field + AI suggestions</li>
-      <li>Improve and refine your CPT design</li>
-    </ol>
+### How to use this tool
+1. Enter your CPT project idea
+2. Click generate
+3. Review AI-generated structure
+4. Refine manually if needed
 
-    <h4>CPT Requirements</h4>
-    <ul>
-      <li><strong>Input:</strong> User interaction</li>
-      <li><strong>Output:</strong> Program result</li>
-      <li><strong>List:</strong> Stored collection of data</li>
-      <li><strong>Procedure:</strong> Function with parameter</li>
-      <li><strong>Algorithm:</strong> Must include sequencing, selection, iteration</li>
-    </ul>
-  </div>
+### CPT Components
+- Input → user interaction
+- Output → displayed result
+- List → stored data collection
+- Procedure → reusable function
+- Algorithm → loop + condition + sequence
+
 </details>
+</div>
 
-<div class="citation-container">
+<!-- ================= AI INPUT ================= -->
+<div class="section">
 
-  <h3>CPT Project Layout Builder</h3>
+<h3>🧠 AI CPT Structure Generator</h3>
 
-  <!-- AI SECTION -->
-  <div style="padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #dee2e6;">
-    <h4 style="margin-top: 0;">AI CPT Idea Helper</h4>
+<textarea id="ideaInput" placeholder="Describe your CPT project idea..."></textarea>
 
-    <label class="apa-tool-label">Project Idea:</label>
-    <textarea class="apa-tool-input" id="user-provided-quote"
-      placeholder="Describe your CPT project idea..."
-      style="min-height: 80px; resize: vertical;"></textarea>
+<button onclick="generateStructure()">Generate CPT Structure</button>
 
-    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <button onclick="generateCPTStructure()"
-        class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition">
-        🔍 Generate CPT Structure
-      </button>
+<div id="status" class="ai-box" style="display:none;"></div>
 
-      <button onclick="saveCurrentCitation()"
-        class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition"
-        style="background-color: #28a745;">
-        💾 Save
-      </button>
+</div>
 
-      <button onclick="loadSavedCitation()"
-        class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition"
-        style="background-color: #17a2b8;">
-        📂 Load
-      </button>
-    </div>
+<!-- ================= MANUAL ================= -->
+<div class="section">
 
-    <div id="ai-status" style="margin-top:10px;padding:8px;border-radius:4px;display:none;"></div>
-  </div>
+<h3>✍️ Manual CPT Builder</h3>
 
-  <!-- CPT FIELDS -->
-  <h4>Manual CPT Builder</h4>
+<div class="grid">
 
-  <label class="apa-tool-label">Input:</label>
-  <input class="apa-tool-input" id="cpt-input" type="text">
+<div>
+<label>Input</label>
+<input id="inputField">
+</div>
 
-  <label class="apa-tool-label">Output:</label>
-  <input class="apa-tool-input" id="cpt-output" type="text">
+<div>
+<label>Output</label>
+<input id="outputField">
+</div>
 
-  <label class="apa-tool-label">List:</label>
-  <input class="apa-tool-input" id="cpt-list" type="text">
+<div>
+<label>List</label>
+<input id="listField">
+</div>
 
-  <label class="apa-tool-label">Procedure:</label>
-  <input class="apa-tool-input" id="cpt-procedure" type="text">
+<div>
+<label>Procedure</label>
+<input id="procedureField">
+</div>
 
-  <label class="apa-tool-label">Algorithm:</label>
-  <input class="apa-tool-input" id="cpt-algorithm" type="text">
+<div>
+<label>Algorithm</label>
+<input id="algorithmField">
+</div>
 
-  <div class="apa-tool-output" id="cpt-layout-text"></div>
+</div>
+
+</div>
+
+<!-- ================= FEEDBACK ================= -->
+<div class="section">
+
+<h3>📊 AI Feedback</h3>
+<div id="feedback" class="ai-box">
+Waiting for AI output...
+</div>
+
+</div>
 
 </div>
 
 <script type="module">
 import { queryGemini } from '{{ site.baseurl }}/assets/js/api/gemini.js';
 
-function showCPTStatus(message, type) {
-    const el = document.getElementById("ai-status");
-    if (!el) return;
-
-    el.textContent = message;
+function setStatus(msg, type="info") {
+    const el = document.getElementById("status");
     el.style.display = "block";
+    el.textContent = msg;
 
-    const styles = {
-        loading: ["#cce5ff", "#004085", "#99d3ff"],
-        success: ["#d1ecf1", "#0c5460", "#bee5eb"],
-        error: ["#f8d7da", "#721c24", "#f5c6cb"]
+    const colors = {
+        info: "#d1ecf1",
+        success: "#d4edda",
+        error: "#f8d7da"
     };
 
-    const s = styles[type] || styles.success;
-
-    el.style.backgroundColor = s[0];
-    el.style.color = s[1];
-    el.style.border = "1px solid " + s[2];
-
-    if (type !== "loading") {
-        setTimeout(() => el.style.display = "none", 5000);
-    }
+    el.style.background = colors[type] || "#d1ecf1";
 }
 
-window.generateCPTStructure = function () {
+window.generateStructure = function () {
 
-    const idea = document.getElementById("user-provided-quote")?.value.trim();
+    const idea = document.getElementById("ideaInput").value.trim();
 
     if (!idea) {
-        showCPTStatus("⚠️ Enter your CPT idea first", "error");
+        setStatus("Enter your CPT idea first.", "error");
         return;
     }
 
     const PROMPT = `
-You are an AP CSP CPT assistant.
+You are an AP CSP CPT structure assistant.
 
-Return ONLY JSON:
+Return ONLY valid JSON:
 
 {
-  "input": {"value":"","suggestion":""},
-  "output": {"value":"","suggestion":""},
-  "list": {"value":"","suggestion":""},
-  "procedure": {"value":"","suggestion":""},
-  "algorithm": {"value":"","suggestion":""}
+  "input": {"value":"","feedback":""},
+  "output": {"value":"","feedback":""},
+  "list": {"value":"","feedback":""},
+  "procedure": {"value":"","feedback":""},
+  "algorithm": {"value":"","feedback":""}
 }
 
 Rules:
-- value = student-ready CPT answer
-- suggestion = improvement tip
-- must match AP CSP requirements
+- value = clear CPT-ready response
+- feedback = how to improve for AP CSP alignment
+- ensure realism and correctness
+- ensure all required CPT components are included
 
-Project:
+Student idea:
 `;
 
-    showCPTStatus("🧠 Generating AI CPT structure...", "loading");
+    setStatus("Generating CPT structure...", "info");
 
     queryGemini({
         prompt: PROMPT,
@@ -211,43 +234,40 @@ Project:
 
         const set = (id, val) => {
             const el = document.getElementById(id);
-            if (el && val) el.value = val;
+            if (el) el.value = val || "";
         };
 
-        set("cpt-input", data.input?.value);
-        set("cpt-output", data.output?.value);
-        set("cpt-list", data.list?.value);
-        set("cpt-procedure", data.procedure?.value);
-        set("cpt-algorithm", data.algorithm?.value);
+        set("inputField", data.input?.value);
+        set("outputField", data.output?.value);
+        set("listField", data.list?.value);
+        set("procedureField", data.procedure?.value);
+        set("algorithmField", data.algorithm?.value);
 
-        document.getElementById("cpt-layout-text").innerHTML = `
-<h4>🧠 AI Suggestions</h4>
-
-<b>Input:</b> ${data.input?.suggestion || ""}<br><br>
-<b>Output:</b> ${data.output?.suggestion || ""}<br><br>
-<b>List:</b> ${data.list?.suggestion || ""}<br><br>
-<b>Procedure:</b> ${data.procedure?.suggestion || ""}<br><br>
-<b>Algorithm:</b> ${data.algorithm?.suggestion || ""}
+        document.getElementById("feedback").innerHTML = `
+<b>Input:</b> ${data.input?.feedback || "No feedback"}<br><br>
+<b>Output:</b> ${data.output?.feedback || "No feedback"}<br><br>
+<b>List:</b> ${data.list?.feedback || "No feedback"}<br><br>
+<b>Procedure:</b> ${data.procedure?.feedback || "No feedback"}<br><br>
+<b>Algorithm:</b> ${data.algorithm?.feedback || "No feedback"}
         `;
 
-        showCPTStatus("✅ AI CPT structure generated", "success");
+        setStatus("Structure generated successfully.", "success");
     })
     .catch(() => {
 
-        document.getElementById("cpt-input").value = "User interaction input";
-        document.getElementById("cpt-output").value = "System displays results";
-        document.getElementById("cpt-list").value = "Stores multiple entries";
-        document.getElementById("cpt-procedure").value = "function process(input)";
-        document.getElementById("cpt-algorithm").value =
-`FOR each item:
- IF condition:
-  update result
-END`;
+        document.getElementById("inputField").value = "User input interaction";
+        document.getElementById("outputField").value = "Program displays results";
+        document.getElementById("listField").value = "Stores multiple data items";
+        document.getElementById("procedureField").value = "function process(input)";
+        document.getElementById("algorithmField").value =
+`loop through items:
+  if condition:
+    update value`;
 
-        document.getElementById("cpt-layout-text").innerHTML =
-"Fallback mode active.";
+        document.getElementById("feedback").innerHTML =
+            "Fallback mode active. Manual editing required.";
 
-        showCPTStatus("📚 Fallback loaded", "success");
+        setStatus("Fallback loaded.", "error");
     });
 };
 </script>
