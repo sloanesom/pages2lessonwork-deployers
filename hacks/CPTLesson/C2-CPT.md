@@ -27,9 +27,23 @@ body, .container, .container * {
   color: #000 !important;
 }
 
-.CodeMirror, .CodeMirror * {
-  color: inherit !important;
+/* Force CodeMirror to always be white background + black text */
+.CodeMirror,
+.CodeMirror * {
+  background: #fff !important;
+  color: #000 !important;
 }
+
+/* Fix gutters (line numbers) */
+.CodeMirror-gutters {
+  background: #fff !important;
+  border-right: 1px solid #ccc !important;
+}
+
+.CodeMirror-linenumber {
+  color: #000 !important;
+}
+
 
 .container {
   max-width: 900px;
