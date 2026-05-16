@@ -14,17 +14,18 @@ The Create Performance Task (CPT) requires a program that demonstrates core comp
 
 Your program must include:
 
-- **Input**: user interaction
-- **Output**: program-generated result
-- **List**: collection of data items
-- **Procedure**: reusable function with parameter
-- **Algorithm**: sequencing, selection, iteration
+- **Input**: user interaction  
+- **Output**: program-generated result  
+- **List**: collection of data items  
+- **Procedure**: reusable function with parameter  
+- **Algorithm**: sequencing, selection, iteration  
 
 ---
 
 <style>
 body, .container, .container * {
   color: #000 !important;
+  box-sizing: border-box;
 }
 
 .container {
@@ -51,6 +52,7 @@ textarea {
   border: 1px solid #ccc;
   font-size: 14px;
   background: #fff;
+  resize: vertical;
 }
 
 label {
@@ -69,112 +71,131 @@ button {
   font-weight: bold;
 }
 
-.save {
-  background: #28a745;
-  color: white;
-}
+button.save { background: #28a745; color: #fff; }
+button.load { background: #007bff; color: #fff; }
+button.clear { background: #dc3545; color: #fff; }
 
-.load {
-  background: #007bff;
-  color: white;
-}
-
-.clear {
-  background: #dc3545;
-  color: white;
+#status {
+  margin-top: 10px;
+  font-size: 14px;
 }
 </style>
 
 <div class="container">
 
-<div class="section">
-<h3>📘 CPT Builder Guide</h3>
-<ul>
-  <li>Input = user action</li>
-  <li>Output = program result</li>
-  <li>List = stored data</li>
-  <li>Procedure = function with parameter</li>
-  <li>Algorithm = loop + if + sequence</li>
-</ul>
+  <div class="section">
+    <h3>📘 CPT Builder Guide</h3>
+    <ul>
+      <li>Input = user action</li>
+      <li>Output = program result</li>
+      <li>List = stored data</li>
+      <li>Procedure = function with parameter</li>
+      <li>Algorithm = loop + if + sequence</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🧠 CPT Idea</h3>
+    <textarea id="ideaInput"></textarea>
+  </div>
+
+  <div class="section">
+    <h3>✍️ CPT Components</h3>
+
+    <label for="inputField">Input</label>
+    <textarea id="inputField"></textarea>
+
+    <label for="outputField">Output</label>
+    <textarea id="outputField"></textarea>
+
+    <label for="listField">List</label>
+    <textarea id="listField"></textarea>
+
+    <label for="procedureField">Procedure</label>
+    <textarea id="procedureField"></textarea>
+
+    <label for="algorithmField">Algorithm</label>
+    <textarea id="algorithmField"></textarea>
+  </div>
+
+  <div class="section">
+    <h3>💾 Save System</h3>
+
+    <button class="save" onclick="saveCPT()">Save</button>
+    <button class="load" onclick="loadCPT()">Load</button>
+    <button class="clear" onclick="clearCPT()">Clear</button>
+
+    <p id="status"></p>
+  </div>
+
 </div>
 
-<div class="section">
-<h3>🧠 CPT Idea</h3>
-<textarea id="ideaInput"></textarea>
-</div>
-
-<div class="section">
-<h3>✍️ CPT Components</h3>
-
-<label>Input</label>
-<textarea id="inputField"></textarea>
-
-<label>Output</label>
-<textarea id="outputField"></textarea>
-
-<label>List</label>
-<textarea id="listField"></textarea>
-
-<label>Procedure</label>
-<textarea id="procedureField"></textarea>
-
-<label>Algorithm</label>
-<textarea id="algorithmField"></textarea>
-</div>
-
-<div class="section">
-<h3>💾 Save System</h3>
-
-<button class="save" onclick="saveCPT()">Save</button>
-<button class="load" onclick="loadCPT()">Load</button>
-<button class="clear" onclick="clearCPT()">Clear</button>
-
-<p id="status" style="margin-top:10px;"></p>
-</div>
-
-</div>
-
+{% raw %}
 <script>
-function saveCPT() {
-  localStorage.setItem("cpt_data", JSON.stringify({
-    idea: document.getElementById("ideaInput").value,
-    input: document.getElementById("inputField").value,
-    output: document.getElementById("outputField").value,
-    list: document.getElementById("listField").value,
-    procedure: document.getElementById("procedureField").value,
-    algorithm: document.getElementById("algorithmField").value
-  }));
+document.addEventListener("DOMContentLoaded", () => {
+  const fields = {
+    idea: "ideaInput",
+    input: "inputField",
+    output: "outputField",
+    list: "listField",
+    procedure: "procedureField",
+    algorithm: "algorithmField"
+  };
 
-  document.getElementById("status").innerText = "Saved successfully.";
-}
-
-function loadCPT() {
-  const data = JSON.parse(localStorage.getItem("cpt_data"));
-  if (!data) {
-    document.getElementById("status").innerText = "No saved data.";
-    return;
+  function getValues() {
+    const data = {};
+    for (const key in fields) {
+      const el = document.getElementById(fields[key]);
+      data[key] = el ? el.value : "";
+    }
+    return data;
   }
 
-  document.getElementById("ideaInput").value = data.idea || "";
-  document.getElementById("inputField").value = data.input || "";
-  document.getElementById("outputField").value = data.output || "";
-  document.getElementById("listField").value = data.list || "";
-  document.getElementById("procedureField").value = data.procedure || "";
-  document.getElementById("algorithmField").value = data.algorithm || "";
+  function setValues(data) {
+    for (const key in fields) {
+      const el = document.getElementById(fields[key]);
+      if (el) el.value = data[key] || "";
+    }
+  }
 
-  document.getElementById("status").innerText = "Loaded successfully.";
-}
+  function setStatus(msg) {
+    const s = document.getElementById("status");
+    if (s) s.innerText = msg;
+  }
 
-function clearCPT() {
-  localStorage.removeItem("cpt_data");
+  window.saveCPT = function () {
+    try {
+      localStorage.setItem("cpt_data", JSON.stringify(getValues()));
+      setStatus("Saved successfully.");
+    } catch (e) {
+      setStatus("Save failed (localStorage not available).");
+    }
+  };
 
-  document.getElementById("ideaInput").value = "";
-  document.getElementById("inputField").value = "";
-  document.getElementById("outputField").value = "";
-  document.getElementById("listField").value = "";
-  document.getElementById("procedureField").value = "";
-  document.getElementById("algorithmField").value = "";
+  window.loadCPT = function () {
+    try {
+      const raw = localStorage.getItem("cpt_data");
+      if (!raw) {
+        setStatus("No saved data.");
+        return;
+      }
+      const data = JSON.parse(raw);
+      setValues(data);
+      setStatus("Loaded successfully.");
+    } catch (e) {
+      setStatus("Load failed (localStorage not available).");
+    }
+  };
 
-  document.getElementById("status").innerText = "Cleared.";
-}
+  window.clearCPT = function () {
+    try {
+      localStorage.removeItem("cpt_data");
+    } catch (e) {
+      // ignore if not available
+    }
+    setValues({});
+    setStatus("Cleared.");
+  };
+});
 </script>
+{% endraw %}
