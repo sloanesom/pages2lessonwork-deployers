@@ -2,7 +2,7 @@
 layout: post
 microblog: True
 title: CPT Project Layout Builder
-description: A structured AP CSP CPT drafting tool for manually building required components.
+description: A structured AP CSP CPT drafting tool for manually building components.
 author: David M, Sloane S
 permalink: /cpt/2
 breadcrumb: True
@@ -14,138 +14,168 @@ The Create Performance Task (CPT) requires a program that demonstrates core comp
 
 Your program must include:
 
-- **Input**: user interaction (typing, clicking, selecting)
+- **Input**: user interaction
 - **Output**: program-generated result
-- **List**: collection of multiple data items
-- **Procedure**: reusable function with at least one parameter
-- **Algorithm**: includes sequencing, selection (if), and iteration (loop)
+- **List**: collection of data items
+- **Procedure**: reusable function with parameter
+- **Algorithm**: sequencing, selection, iteration
 
 ---
 
 <style>
+body, .container, .container * {
+  color: #000 !important;
+}
+
 .container {
   max-width: 900px;
   margin: auto;
   padding: 20px;
   font-family: Arial, sans-serif;
-  color: #000;
 }
 
 .section {
-  margin-top: 18px;
+  margin-top: 16px;
   padding: 16px;
-  border: 1px solid #e0e0e0;
   border-radius: 10px;
-  background: #fafafa;
-}
-
-label {
-  font-weight: bold;
-  display: block;
-  margin-top: 12px;
-  color: #000;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
 }
 
 textarea {
   width: 100%;
-  min-height: 180px;
-  padding: 12px;
-  margin-top: 6px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-  resize: vertical;
-  background: #fff;
-  color: #000;
-}
-
-input {
-  width: 100%;
-  min-height: 70px;
+  min-height: 120px;
   padding: 10px;
   margin-top: 6px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
   background: #fff;
-  color: #000;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
 }
 
-small {
-  color: #666;
-  font-size: 13px;
+button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.save {
+  background: #28a745;
+  color: white;
+}
+
+.load {
+  background: #007bff;
+  color: white;
+}
+
+.clear {
+  background: #dc3545;
+  color: white;
 }
 </style>
 
 <div class="container">
 
-<!-- ================= GUIDE ================= -->
 <div class="section">
-
 <h3>📘 CPT Builder Guide</h3>
-
-<p>This tool helps you manually structure your CPT project.</p>
-
 <ul>
-  <li><b>Input:</b> What the user does</li>
-  <li><b>Output:</b> What the program shows</li>
-  <li><b>List:</b> Data storage</li>
-  <li><b>Procedure:</b> Function with parameter</li>
-  <li><b>Algorithm:</b> Loop + condition + sequence</li>
+  <li>Input = user action</li>
+  <li>Output = program result</li>
+  <li>List = stored data</li>
+  <li>Procedure = function with parameter</li>
+  <li>Algorithm = loop + if + sequence</li>
 </ul>
-
 </div>
 
-<!-- ================= MAIN INPUT ================= -->
 <div class="section">
-
 <h3>🧠 CPT Idea</h3>
-
-<label>Describe your CPT project idea</label>
-<textarea id="ideaInput" placeholder="Write your project idea here..."></textarea>
-
+<textarea id="ideaInput"></textarea>
 </div>
 
-<!-- ================= MANUAL FIELDS ================= -->
 <div class="section">
+<h3>✍️ CPT Components</h3>
 
-<h3>✍️ CPT Builder Fields</h3>
-
-<div class="grid">
-
-<div>
 <label>Input</label>
 <textarea id="inputField"></textarea>
-</div>
 
-<div>
 <label>Output</label>
 <textarea id="outputField"></textarea>
-</div>
 
-<div>
 <label>List</label>
 <textarea id="listField"></textarea>
-</div>
 
-<div>
 <label>Procedure</label>
 <textarea id="procedureField"></textarea>
-</div>
 
-<div>
 <label>Algorithm</label>
 <textarea id="algorithmField"></textarea>
 </div>
 
+<div class="section">
+<h3>💾 Save System</h3>
+
+<button class="save" onclick="saveCPT()">Save</button>
+<button class="load" onclick="loadCPT()">Load</button>
+<button class="clear" onclick="clearCPT()">Clear</button>
+
+<p id="status" style="margin-top:10px;"></p>
 </div>
 
 </div>
 
-</div>
+<script>
+function saveCPT() {
+  const data = {
+    idea: ideaInput.value,
+    input: inputField.value,
+    output: outputField.value,
+    list: listField.value,
+    procedure: procedureField.value,
+    algorithm: algorithmField.value
+  };
+
+  localStorage.setItem("cpt_data", JSON.stringify(data));
+  status.innerText = "Saved successfully.";
+}
+
+function loadCPT() {
+  const data = JSON.parse(localStorage.getItem("cpt_data"));
+  if (!data) {
+    status.innerText = "No saved data.";
+    return;
+  }
+
+  ideaInput.value = data.idea || "";
+  inputField.value = data.input || "";
+  outputField.value = data.output || "";
+  listField.value = data.list || "";
+  procedureField.value = data.procedure || "";
+  algorithmField.value = data.algorithm || "";
+
+  status.innerText = "Loaded successfully.";
+}
+
+function clearCPT() {
+  localStorage.removeItem("cpt_data");
+
+  ideaInput.value = "";
+  inputField.value = "";
+  outputField.value = "";
+  listField.value = "";
+  procedureField.value = "";
+  algorithmField.value = "";
+
+  status.innerText = "Cleared.";
+}
+</script>

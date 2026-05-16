@@ -8,16 +8,7 @@ author: David M, Sloane S
 permalink: /cpt/4
 ---
 
-## CPT Project Idea Builder
-
-Use this tool to help you brainstorm and improve your CPT project idea.
-
-Your CPT project should:
-- Be simple and easy to explain
-- Solve a small, clear problem
-- Have a clear purpose and user
-
-### CPT Idea Helper
+## AP CSP CPT FRQ Practice
 
 <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
 <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
