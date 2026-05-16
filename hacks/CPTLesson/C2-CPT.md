@@ -1,18 +1,24 @@
 ---
 layout: post
 microblog: True
-title: APA Reference Instruction
-description: A tool to assist students in building an APA reference. 
+title: CPT Project Layout Builder
+description: A drafting tool that helps students map their CPT project to AP CSP requirements (input, output, lists, procedures, and algorithms).
 author: David M, Sloane S
 permalink: /cpt/2
 breadcrumb: True
 ---
 
-## Sample Consequence
+## CPT Requirements Overview
 
-Fictitious example by Salem, our workshop character found the perfect quote for their research paper: "Innovation distinguishes between a leader and a follower."It was exactly what they needed! They copy-pasted it into their paper and moved on. Later, their professor marked it as plagiarism - it was a Steve Jobs quote that needed proper citation. Alex's grade dropped from an A to a C.
+The Create Performance Task (CPT) requires you to build a program and explain how it works.
 
-Research this quote and use it to build an APA reference.
+Your program MUST include:
+- Input: user interaction (typing, clicking, etc.)
+- Output: result displayed to the user
+- List: used to store multiple related pieces of data
+- Procedure: a function with at least one parameter(variable that receives input)
+- Algorithm: must include sequencing, selection (if), and iteration (loop)
+-  Key idea: You are graded on whether these parts are clearly shown and explained.
 
 ---
 
