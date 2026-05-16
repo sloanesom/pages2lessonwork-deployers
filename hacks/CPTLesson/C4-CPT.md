@@ -2,8 +2,8 @@
 layout: post
 microblog: True
 breadcrumb: True
-title: CPT Project Idea Workshop
-description: A tool to help students brainstorm and refine their CPT project ideas and purpose.
+title: CPT Collegeboard FRQ Workshop
+description: To help students prepare for the FRQ section regarding their CPT projects.
 author: David M, Sloane S
 permalink: /cpt/4
 ---
@@ -76,28 +76,34 @@ button:hover {
 <details style="padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #007bff;">
   <summary style="cursor: pointer; font-weight: bold; color: #007bff; font-size: 18px;">Writing Helper (Click to see guide)</summary>
   <div style="margin-top: 10px;">
-    <p>This drafting analysis tool helps you improve your CPT Idea by providing AI-powered feedback.</p>
+    <p>This tool gives you AP CSP-style practice questions about your project. You answer them, and the system provides feedback, improvement ideas, and suggestions to strengthen your CPT responses.</p>
 
-    <h4>Idea Support Modes:</h4>
-  <ul>
-     <li><strong>Project Purpose Check:</strong> Helps explain the main goal and purpose of your CPT project</li>
-     <li><strong>User & Feature Builder:</strong> Helps identify who will use your project and what features it should include</li>
-     <li><strong>Idea Expansion:</strong> Suggests additional features and ways to improve your project idea</li>
-     <li><strong>CPT Project Review:</strong> Gives feedback on whether your project idea is simple, clear, and realistic for APCSP CPT</li>
-  </ul>
-    
-    <p><em>Note: Sample texts are provided for each mode to help you explore different types of feedback. You can replace them with your own ideas.</em></p>
+    <h4>How it works:</h4>
+    <ul>
+      <li><strong>Step 1:</strong> You are given a CPT-style question</li>
+      <li><strong>Step 2:</strong> You write your answer based on your project</li>
+      <li><strong>Step 3:</strong> AI reviews your response</li>
+      <li><strong>Step 4:</strong> You receive feedback + suggestions for improvement</li>
+    </ul>
+
+    <h4>What the feedback focuses on:</h4>
+    <ul>
+      <li>Clarity of your explanation</li>
+      <li>Whether you included input, process, and output</li>
+      <li>Use of loops, conditions, or logic (if applicable)</li>
+      <li>How well your answer matches AP CSP expectations</li>
+      <li>Ideas to improve your CPT written responses</li>
+    </ul>
+
+    <p style="font-style: italic;">
+      Tip: Strong answers clearly explain what the program does and how it works step-by-step.
+    </p>
+
   </div>
 </details>
 
 <div class="controls">
     <div class="control-group">
-        <select id="analysisMode">
-            <option value="purposecheck">Project Purpose Check</option>
-            <option value="userfeature">User & Feature Builder</option>
-            <option value="ideacheck">Idea Expansion</option>
-            <option value="overview">CPT Project Review</option>
-        </select>
     </div>
     <div class="control-group">
         <button id="saveBtn" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition">💾 Save Draft</button>
@@ -124,6 +130,17 @@ button:hover {
 <div id="status-message" style="margin: 10px 0; padding: 8px; border-radius: 4px; display: none;"></div>
 
 <div id="output"></div>
+
+<!-- ADD THIS SECTION HERE -->
+<div id="exam-section" style="margin-top:20px;">
+    <h3>🎯 CPT Exam Question Practice</h3>
+
+    <div id="exam-question" style="padding:10px; border:1px solid #ddd; border-radius:8px; margin-bottom:10px;">
+        Click below to generate a question
+    </div>
+
+    <button id="newQuestionBtn">🔄 New Question</button>
+</div>
 
 <!-- Hidden sample texts -->
 <div class="sample-text" data-type="purposecheck">
@@ -166,9 +183,6 @@ My CPT project is a Study Planner designed to help students organize homework, t
             theme: 'snow'
         });
 
-        // Load a random sample on page load
-        loadRandomSample();
-
         // Test Mode - Fill editor with sample text
         document.getElementById("test-mode-c4").onclick = function() {
             if (confirm("This will fill the editor with sample text for testing. Continue?")) {
@@ -193,12 +207,10 @@ This project helps students quickly discover opportunities to join school activi
         document.getElementById("saveBtn").onclick = function() {
             const text = quill.getContents(); // Get full Delta format with formatting
             const plainText = quill.getText(); // Get plain text
-            const mode = document.getElementById("analysisMode").value;
 
             const draft = {
                 content: text,
                 plainText: plainText,
-                mode: mode,
                 timestamp: new Date().toISOString(),
                 id: 'cpt-idea-draft-v1' // Updated for CPT project system
             };
@@ -227,9 +239,7 @@ This project helps students quickly discover opportunities to join school activi
                     // Set the content with formatting
                     quill.setContents(draft.content);
 
-                    // Set the analysis mode
-                    document.getElementById("analysisMode").value = draft.mode;
-
+                
                     // Show success message with timestamp
                     const saveDate = new Date(draft.timestamp).toLocaleString();
                     showStatusMessage(`✅ CPT idea loaded successfully! (Saved: ${saveDate})`, "success");
@@ -250,7 +260,6 @@ This project helps students quickly discover opportunities to join school activi
         document.getElementById("submitBtn").onclick = function() {
             const text = quill.getText().trim();
             const content = quill.getContents();
-            const mode = document.getElementById("analysisMode").value;
 
             if (text.length === 0) {
                 showStatusMessage("⚠️ Cannot submit empty CPT idea", "warning");
@@ -264,7 +273,6 @@ This project helps students quickly discover opportunities to join school activi
                     studentWork: {
                         writingContent: text,
                         deltaContent: content, // Full Quill.js Delta format
-                        analysisMode: mode,
                         wordCount: text.split(/\s+/).filter(word => word.length > 0).length
                     },
                     timestamp: new Date().toISOString(),
@@ -333,19 +341,13 @@ This project helps students quickly discover opportunities to join school activi
             }, 3000);
         }
 
-        // Load a random sample on page load
-        loadRandomSample();
-
         // Analyze Text button
         document.getElementById("checkBtn").onclick = function() {
             const text = quill.getText();
-            const mode = document.getElementById("analysisMode").value;
             const outputDiv = document.getElementById("output");
 
             // Clear previous output and show analyzing message
             outputDiv.textContent = "⏳ Reviewing CPT idea...";
-
-            const prompt = ANALYSIS_PROMPTS[mode] || ANALYSIS_PROMPTS.plagiarism;
 
             // Use the new modular API with functional programming style
             queryGemini({
@@ -373,28 +375,23 @@ This project helps students quickly discover opportunities to join school activi
                 showStatusMessage("⚠️ " + error.message, "error");
             });
         };
+           const EXAM_QUESTIONS = [
+    "Explain how your program uses input to achieve its purpose.",
+    "Describe how your program stores and updates data.",
+    "Explain a procedure in your program and what it does.",
+    "Describe a loop in your program and what it accomplishes.",
+    "Explain a conditional in your program and how it affects output."
+];
 
-        function loadRandomSample() {
-            const mode = document.getElementById("analysisMode").value;
-            const samples = document.querySelectorAll(`.sample-text[data-type="${mode}"]`);
+function loadRandomQuestion() {
+    const q = EXAM_QUESTIONS[Math.floor(Math.random() * EXAM_QUESTIONS.length)];
+    document.getElementById("exam-question").textContent = q;
+}
 
-            if (samples.length === 0) {
-                // Fallback to plagiarism samples if mode has no samples
-                const fallbackSamples = document.querySelectorAll('.sample-text[data-type="purposecheck"]');
-                if (fallbackSamples.length > 0) {
-                    const randomIndex = Math.floor(Math.random() * fallbackSamples.length);
-                    quill.setText(fallbackSamples[randomIndex].textContent.trim());
-                }
-                return;
-            }
+// load one automatically on page load
+loadRandomQuestion();
 
-            const randomIndex = Math.floor(Math.random() * samples.length);
-            quill.setText(samples[randomIndex].textContent.trim());
-        }
-
-        // Update sample when analysis mode changes
-        document.getElementById("analysisMode").onchange = function() {
-            loadRandomSample();
-        };
+// button click
+document.getElementById("newQuestionBtn").onclick = loadRandomQuestion;
     });
 </script>
