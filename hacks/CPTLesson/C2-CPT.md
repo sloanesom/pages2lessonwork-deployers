@@ -123,19 +123,19 @@ Your program MUST include:
   </div>  <!-- Manual Citation Fields -->
   <h4 style="margin-bottom: 15px; color: #495057;">Manual CPT Layout Builder</h4>
   
-  <label class="apa-tool-label">Author(s):</label>
+  <label class="apa-tool-label">Input:</label>
   <input class="apa-tool-input" id="cpt-input" type="text" placeholder="User interaction (clicking, typing, selecting)" />
   
-  <label class="apa-tool-label">Date (Year, Month Day):</label>
+  <label class="apa-tool-label">Output:</label>
   <input class="apa-tool-input" id="cpt-output" type="text" placeholder="What the program displays" />
   
-  <label class="apa-tool-label">Title (in italics):</label>
+  <label class="apa-tool-label">List:</label>
   <input class="apa-tool-input" id="cpt-list" type="text" placeholder="Data stored in a list" />
   
-  <label class="apa-tool-label">Source/Website:</label>
+  <label class="apa-tool-label">Procedure:</label>
   <input class="apa-tool-input" id="cpt-procedure" type="text" placeholder="Function with parameter" />
   
-  <label class="apa-tool-label">URL:</label>
+  <label class="apa-tool-label">Algorithim:</label>
   <input class="apa-tool-input" id="cpt-algorithim" type="text" placeholder="Sequence + if + loop logic" />
   
   <button class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition" onclick="generateCPTLayout()">Generate CPT Layout Summary</button>
