@@ -79,18 +79,7 @@ button {
 <div class="container">
 
 <div class="section">
-<h3>📘 CPT Trace Guide</h3>
-<ul>
-  <li>Input</li>
-  <li>Loop</li>
-  <li>Condition</li>
-  <li>Updates</li>
-  <li>Output</li>
-</ul>
-</div>
-
-<div class="section">
-<h3>Written Response of Purpose</h3>
+<h3>📘 Written Response of Purpose</h3>
 <textarea id="programInput"></textarea>
 <button class="save" onclick="save('programInput')">Save</button>
 </div>
