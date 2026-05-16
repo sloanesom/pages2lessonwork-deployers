@@ -116,18 +116,7 @@ button.clear { background: #dc3545; color: #fff; }
 <div class="container">
 
   <div class="section">
-    <h3>📘 CPT Builder Guide</h3>
-    <ul>
-      <li>Input = user action</li>
-      <li>Output = program result</li>
-      <li>List = stored data</li>
-      <li>Procedure = function with parameter</li>
-      <li>Algorithm = loop + if + sequence</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h3>CPT Purpose</h3>
+    <h3>📘 CPT Purpose</h3>
     <textarea id="ideaInput"></textarea>
   </div>
 
