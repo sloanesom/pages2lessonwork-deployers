@@ -29,6 +29,7 @@ Key idea: You are not just describing code — you are explaining **how the prog
   margin: auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  color: #000;
 }
 
 .box {
@@ -38,12 +39,15 @@ Key idea: You are not just describing code — you are explaining **how the prog
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 14px;
+  color: #000;
+  background: #fff;
 }
 
 .label {
   font-weight: bold;
   margin-top: 10px;
   display: block;
+  color: #000;
 }
 
 .section {
@@ -52,6 +56,7 @@ Key idea: You are not just describing code — you are explaining **how the prog
   border-radius: 10px;
   border: 1px solid #ddd;
   background: #fafafa;
+  color: #000;
 }
 
 button {
@@ -74,6 +79,7 @@ button:hover {
   border-left: 4px solid #007bff;
   background: #f8f9fa;
   white-space: pre-wrap;
+  color: #000;
 }
 
 .small {

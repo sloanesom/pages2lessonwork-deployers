@@ -30,6 +30,7 @@ Key idea: You are evaluated on whether these components are clearly implemented 
   margin: auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  color: #000;
 }
 
 .section {
@@ -38,12 +39,14 @@ Key idea: You are evaluated on whether these components are clearly implemented 
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   background: #fafafa;
+  color: #000;
 }
 
 label {
   font-weight: bold;
   display: block;
   margin-top: 10px;
+  color: #000;
 }
 
 input, textarea {
@@ -53,6 +56,8 @@ input, textarea {
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 14px;
+  color: #000;
+  background: #fff;
 }
 
 button {
@@ -75,6 +80,7 @@ button:hover {
   border-left: 4px solid #007bff;
   background: #f8f9fa;
   white-space: pre-wrap;
+  color: #000;
 }
 
 .grid {
