@@ -88,7 +88,7 @@ import { pythonURI, javaURI, fetchOptions } from '{{site.baseurl}}/assets/js/api
   const editor = CodeMirror.fromTextArea(container.querySelector('.editor-textarea'), {
     lineNumbers: true,
     mode: initialLang === "java" ? "text/x-java" : (initialLang || "python"),
-    theme: "default",
+    theme: "none",
     indentUnit: 4,
     tabSize: 4
   });

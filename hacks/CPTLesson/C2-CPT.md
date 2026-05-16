@@ -22,29 +22,32 @@ Your program must include:
 
 ---
 <style>
-/* Fix text visibility */
-body, .container, .container * {
-  color: #000 !important;
-}
 
-/* Force CodeMirror to always be white background + black text */
+/* FORCE ALL CODEMIRROR CHARACTERS TO BE PURE WHITE */
 .CodeMirror,
 .CodeMirror * {
-  background: #fff !important;
-  color: #000 !important;
+  color: #ffffff !important;
+  background: #000000 !important;
 }
 
-/* Fix gutters (line numbers) */
-.CodeMirror-gutters {
-  background: #fff !important;
-  border-right: 1px solid #ccc !important;
-}
-
+/* Line numbers also white */
 .CodeMirror-linenumber {
-  color: #000 !important;
+  color: #ffffff !important;
 }
 
+/* Gutter background black */
+.CodeMirror-gutters {
+  background: #000000 !important;
+  border-right: 1px solid #333 !important;
+}
 
+/* Output box also white text on black */
+.output-content {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* PAGE STYLING (unchanged) */
 .container {
   max-width: 900px;
   margin: auto;
@@ -96,6 +99,7 @@ button.clear { background: #dc3545; color: #fff; }
   margin-top: 10px;
   font-size: 14px;
 }
+
 </style>
 
 <div class="container">
