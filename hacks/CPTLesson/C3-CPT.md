@@ -1,4 +1,4 @@
- ---
+---
 layout: post
 microblog: True
 title: CPT Program Trace Builder
@@ -22,62 +22,64 @@ You should describe:
 Key idea: You are tracking execution over time, not just describing code.
 
 ---
+
 <style>
-/* Global text: black */
 body, .container, .container * {
   color: #000 !important;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
   font-family: Arial, sans-serif;
 }
 
-/* CodeMirror: white background, black text */
-.CodeMirror,
-.CodeMirror * {
-  background: #fff !important;
-  color: #000 !important;
+.section {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
 }
 
-/* CodeMirror gutters (line numbers) */
-.CodeMirror-gutters {
-  background: #fff !important;
-  border-right: 1px solid #ccc !important;
-}
-
-.CodeMirror-linenumber {
-  color: #000 !important;
-}
-
-/* Textareas: white background, black text */
 textarea {
-  background: #fff;
-  color: #000;
-  border: 1px solid #ccc;
-  padding: 10px;
   width: 100%;
-  border-radius: 6px;
+  min-height: 120px;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: #fff;
 }
 
-/* Buttons: simple gray */
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
 button {
-  background: #e0e0e0;
-  color: #000;
-  border: none;
   padding: 10px 14px;
-  border-radius: 6px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  margin-right: 8px;
+  margin-top: 10px;
   font-weight: bold;
 }
 
-/* Green Save button (your only colored element) */
-button.save {
+.save {
   background: #28a745;
-  color: #fff;
+  color: white;
 }
 </style>
 
 <div class="container">
 
 <div class="section">
-<h3>CPT Trace Guide</h3>
+<h3>📘 CPT Trace Guide</h3>
 <ul>
   <li>Input</li>
   <li>Loop</li>
@@ -94,53 +96,27 @@ button.save {
 </div>
 
 <div class="section">
-<h3>Finalized Trace Box</h3>
-{% include code-runner.html
-   runner_id="trace_final_runner"
-   language="python"
-   code=""
-%}
-</div>
-
-<div class="section">
-<h3>Program Trace</h3>
+<h3>✍️ Program Trace</h3>
 
 <label>Input / Start State</label>
-{% include code-runner.html
-   runner_id="trace_input_runner"
-   language="python"
-   code=""
-%}
+<textarea id="inputState"></textarea>
+<button class="save" onclick="save('inputState')">Save</button>
 
 <label>Loop Behavior</label>
-{% include code-runner.html
-   runner_id="trace_loop_runner"
-   language="python"
-   code=""
-%}
+<textarea id="loopState"></textarea>
+<button class="save" onclick="save('loopState')">Save</button>
 
 <label>Condition</label>
-{% include code-runner.html
-   runner_id="trace_condition_runner"
-   language="python"
-   code=""
-%}
+<textarea id="conditionState"></textarea>
+<button class="save" onclick="save('conditionState')">Save</button>
 
 <label>Updates</label>
-{% include code-runner.html
-   runner_id="trace_updates_runner"
-   language="python"
-   code=""
-%}
+<textarea id="updateState"></textarea>
+<button class="save" onclick="save('updateState')">Save</button>
 
 <label>Output</label>
-{% include code-runner.html
-   runner_id="trace_output_runner"
-   language="python"
-   code=""
-%}
-
-</div>
+<textarea id="outputState"></textarea>
+<button class="save" onclick="save('outputState')">Save</button>
 
 </div>
 
@@ -152,7 +128,8 @@ function save(id) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  ["programInput"].forEach(id => {
+  ["programInput","inputState","loopState","conditionState","updateState","outputState"]
+  .forEach(id => {
     const saved = localStorage.getItem(id);
     if (saved) document.getElementById(id).value = saved;
   });
