@@ -24,6 +24,10 @@ Key idea: You are tracking execution over time, not just describing code.
 ---
 
 <style>
+body, .container, .container * {
+  color: #000 !important;
+}
+
 .container {
   max-width: 900px;
   margin: auto;
@@ -32,35 +36,53 @@ Key idea: You are tracking execution over time, not just describing code.
 }
 
 .section {
-  margin-top: 18px;
-  padding: 14px;
-  border: 1px solid #ddd;
+  margin-top: 16px;
+  padding: 16px;
   border-radius: 10px;
-}
-
-label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
 }
 
 textarea {
   width: 100%;
-  min-height: 140px;
-  margin-top: 6px;
+  min-height: 120px;
   padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-family: Arial, sans-serif;
+  font-size: 14px;
+  background: #fff;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
 }
 
 button {
-  margin-top: 6px;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  background: #f5f5f5;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 6px;
+  margin-right: 8px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.save {
+  background: #28a745;
+  color: white;
+}
+
+.load {
+  background: #007bff;
+  color: white;
+}
+
+.clear {
+  background: #dc3545;
+  color: white;
 }
 </style>
 
