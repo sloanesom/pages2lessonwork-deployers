@@ -29,99 +29,99 @@ Key idea: You are tracking execution over time, not just describing code.
   margin: auto;
   padding: 20px;
   font-family: Arial, sans-serif;
-  color: #000;
 }
 
 .section {
-  margin-top: 20px;
-  padding: 16px;
+  margin-top: 18px;
+  padding: 14px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  background: #fafafa;
 }
 
 label {
-  font-weight: bold;
   display: block;
-  margin-top: 12px;
-  color: #000;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 textarea {
   width: 100%;
-  min-height: 160px;
-  padding: 12px;
+  min-height: 140px;
   margin-top: 6px;
-  border-radius: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
-  font-size: 15px;
-  resize: vertical;
-  background: #fff;
-  color: #000;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
 }
 
 button {
-  margin-top: 12px;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 6px;
-  background: #007bff;
-  color: white;
+  margin-top: 6px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
   cursor: pointer;
-}
-
-button:hover {
-  background: #0056b3;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
+  border-radius: 6px;
 }
 </style>
 
 <div class="container">
 
-<!-- GUIDE -->
 <div class="section">
 <h3>📘 CPT Trace Guide</h3>
-
 <ul>
-  <li><b>Input:</b> starting data or user input</li>
-  <li><b>Loop:</b> repeated steps in the program</li>
-  <li><b>Condition:</b> if/else decisions</li>
-  <li><b>Updates:</b> how variables change</li>
-  <li><b>Output:</b> final result of program</li>
+  <li>Input</li>
+  <li>Loop</li>
+  <li>Condition</li>
+  <li>Updates</li>
+  <li>Output</li>
 </ul>
 </div>
 
-<!-- MAIN IDEA -->
 <div class="section">
 <h3>🧠 Program Idea</h3>
-<label>Describe your program</label>
-<textarea id="programInput" placeholder="Write what your program does..."></textarea>
+<textarea id="programInput"></textarea>
+<button onclick="save('programInput')">Save</button>
 </div>
 
-<!-- TRACE BOXES -->
 <div class="section">
 <h3>✍️ Program Trace</h3>
 
 <label>Input / Start State</label>
-<textarea id="inputState" placeholder="What starts the program?"></textarea>
+<textarea id="inputState"></textarea>
+<button onclick="save('inputState')">Save</button>
 
 <label>Loop Behavior</label>
-<textarea id="loopState" placeholder="Does it repeat? What happens in the loop?"></textarea>
+<textarea id="loopState"></textarea>
+<button onclick="save('loopState')">Save</button>
 
-<label>Condition (if/else)</label>
-<textarea id="conditionState" placeholder="What decisions are made?"></textarea>
+<label>Condition</label>
+<textarea id="conditionState"></textarea>
+<button onclick="save('conditionState')">Save</button>
 
-<label>Variable Updates</label>
-<textarea id="updateState" placeholder="How do values change?"></textarea>
+<label>Updates</label>
+<textarea id="updateState"></textarea>
+<button onclick="save('updateState')">Save</button>
 
-<label>Final Output</label>
-<textarea id="outputState" placeholder="What does the program output?"></textarea>
+<label>Output</label>
+<textarea id="outputState"></textarea>
+<button onclick="save('outputState')">Save</button>
 
 </div>
 
 </div>
+
+<script>
+function save(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  localStorage.setItem(id, el.value);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  ["programInput","inputState","loopState","conditionState","updateState","outputState"]
+  .forEach(id => {
+    const saved = localStorage.getItem(id);
+    if (saved) document.getElementById(id).value = saved;
+  });
+});
+</script>
