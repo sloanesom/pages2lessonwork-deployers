@@ -22,7 +22,7 @@ Your program must include:
 ## CPT Guide Home
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
-  <a href="https://sloanesom.github.io/pages2lessonwork-deployers/cpt/code" style="text-decoration: none;">
+  <a href="https://sloanesom.github.io/pages2lessonwork-deployers/cpt" style="text-decoration: none;">
     <div style="background-color: rgb(32, 122, 201); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
       Code Runner Guide
     </div>

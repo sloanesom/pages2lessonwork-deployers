@@ -67,7 +67,7 @@ lxdData:
 }
 </style>
 
-<a href="https://sloanesom.github.io/pages2lessonwork-deployers/cpt" 
+<a href="https://sloanesom.github.io/pages2lessonwork-deployers/cpt/code"
    class="code-runner-toggle">
     CODE RUNNER GUIDE
 </a>
