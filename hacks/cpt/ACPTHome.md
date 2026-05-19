@@ -36,6 +36,45 @@ parent: "CPT Guide"
             z-index: -1;
         }
 
+        /* FIVE-POINTED ANIMATED STARS */
+        .star-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .star {
+            position: absolute;
+            width: 0;
+            height: 0;
+            opacity: 0.9;
+            animation: floatStar 6s linear infinite;
+        }
+
+        .star:before {
+            content: "★";
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        @keyframes floatStar {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
         /* STATIC LARGE BACKGROUND ICONS */
         .static-bg {
             position: fixed;
@@ -67,7 +106,7 @@ parent: "CPT Guide"
             animation: move 12s linear infinite;
             z-index: 5;
             opacity: 0.9;
-            filter: hue-rotate(180deg) brightness(1.4); /* makes it College Board blue */
+            filter: hue-rotate(180deg) brightness(1.4);
         }
 
         @keyframes move {
@@ -119,6 +158,10 @@ parent: "CPT Guide"
 </head>
 
 <body>
+
+    <!-- STAR FIELD -->
+    <div class="star-field"></div>
+
     <div class="bg-gradient"></div>
 
     <!-- STATIC BACKGROUND ICONS -->
@@ -135,12 +178,31 @@ parent: "CPT Guide"
 
     <div class="container">
         <h1>CPT GUIDE</h1>
-        <p class="subtitle">Your Journey Through the AP CSP Project</p>
+        <p class="subtitle">Journey Through the AP CSP Project</p>
 
-        <a href="/cpt/" class="start-button">
+        <a href="/pages2lessonwork-deployers/cpt/" class="start-button">
             Enter CPT Guide
         </a>
     </div>
+
+    <!-- STAR GENERATOR -->
+    <script>
+        const starField = document.querySelector('.star-field');
+
+        for (let i = 0; i < 40; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = (Math.random() * 6) + 's';
+
+            const size = 0.8 + Math.random() * 1.4;
+            star.style.fontSize = size + 'rem';
+
+            starField.appendChild(star);
+        }
+    </script>
 
 </body>
 </html>
