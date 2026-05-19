@@ -36,7 +36,7 @@ parent: "CPT Guide"
             z-index: -1;
         }
 
-        /* FIVE-POINTED ANIMATED STARS */
+        /* ⭐ FALLING WHITE 5‑POINT STARS ⭐ */
         .star-field {
             position: fixed;
             top: 0;
@@ -49,29 +49,19 @@ parent: "CPT Guide"
 
         .star {
             position: absolute;
-            width: 0;
-            height: 0;
-            opacity: 0.9;
-            animation: floatStar 6s linear infinite;
-        }
-
-        .star:before {
-            content: "★";
-            font-size: 1.2rem;
             color: white;
+            opacity: 0.9;
+            animation: fallStar linear infinite;
         }
 
-        @keyframes floatStar {
+        @keyframes fallStar {
             0% {
-                transform: translateY(0) scale(1);
-                opacity: 0.3;
-            }
-            50% {
+                transform: translateY(-10vh) rotate(0deg);
                 opacity: 1;
             }
             100% {
-                transform: translateY(-120vh) scale(1.2);
-                opacity: 0;
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 1;
             }
         }
 
@@ -159,7 +149,7 @@ parent: "CPT Guide"
 
 <body>
 
-    <!-- STAR FIELD -->
+    <!-- ⭐ STAR FIELD ⭐ -->
     <div class="star-field"></div>
 
     <div class="bg-gradient"></div>
@@ -180,25 +170,25 @@ parent: "CPT Guide"
         <h1>CPT GUIDE</h1>
         <p class="subtitle">Journey Through the AP CSP Project</p>
 
-        <a href="/pages2lessonwork-deployers/cpt/" class="start-button">
+        <a href="/pages2lessonwork-deployers/cpt" class="start-button">
             Enter CPT Guide
         </a>
     </div>
 
-    <!-- STAR GENERATOR -->
+    <!-- ⭐ STAR GENERATOR ⭐ -->
     <script>
         const starField = document.querySelector('.star-field');
 
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 60; i++) {
             const star = document.createElement('div');
             star.classList.add('star');
+            star.textContent = "★";
 
             star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = (Math.random() * 6) + 's';
-
-            const size = 0.8 + Math.random() * 1.4;
-            star.style.fontSize = size + 'rem';
+            star.style.top = Math.random() * -100 + '%'; 
+            star.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+            star.style.animationDuration = (4 + Math.random() * 6) + 's';
+            star.style.animationDelay = (Math.random() * 5) + 's';
 
             starField.appendChild(star);
         }
