@@ -38,10 +38,36 @@ lxdData:
 ---
 {%- include tailwind/plagiarism_info.html -%}
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
-  <a href="https://sloanesom.github.io/pages2lessonwork-deployers/cpt/code" style="text-decoration: none;">
-    <div style="background-color: rgb(32, 122, 201); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-      Code Runner Guide
-    </div>
-  </a>
-</div>
+<style>
+/* SIDE BLUE BUTTON — CODE RUNNER GUIDE */
+.code-runner-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1E4FBF; /* Strong College Board Blue */
+    color: white;
+    padding: 20px 14px;
+    cursor: pointer;
+    border-radius: 0 12px 12px 0;
+    font-weight: bold;
+    z-index: 2000;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 1.4rem; /* LARGE */
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.code-runner-toggle:hover {
+    background: #2F6BFF;
+    box-shadow: 0 0 25px rgba(47,107,255,0.7);
+    transform: translateY(-50%) scale(1.05);
+}
+</style>
+
+<a href="https://sloanesom.github.io/pages2lessonwork-deployers/cpt/code" 
+   class="code-runner-toggle">
+    CODE RUNNER GUIDE
+</a>
