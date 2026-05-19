@@ -7,6 +7,16 @@ description: >
   Build the APCSP CPT project through a quest to assist students in fulfilling the collegeboard requirements.
 author: David M, Sloane S
 permalink: /cpt
+---
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+  <a href="https://sloanesom.github.io/pages2lessonwork-deployers/cpt/code" style="text-decoration: none;">
+    <div style="background-color: rgb(32, 122, 201); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+      Code Runner Guide
+    </div>
+  </a>
+</div>
+
 lxdData:
   Title: "Learning Modules"
   Description: "Explore this quest of lessons and workshops to build the APCSP CPT Project"
