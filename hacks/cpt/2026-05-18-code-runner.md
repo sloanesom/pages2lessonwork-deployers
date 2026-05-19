@@ -30,145 +30,104 @@ Your program must include:
 </div>
 
 ## CPT Components Draft
-{% capture challenge1 %}
-Pick a Language to start drafting your CPT
+{% capture challenge_components %}
+{% endcapture %}
+
+{% capture code_components %}
 {% endcapture %}
 
 {% include code-runner.html
-   runner_id="exercise1"
+   runner_id="runner_components"
    language="python"
-   challenge=challenge1
-   code=code1
+   challenge=challenge_components
+   code=code_components
 %}
 
 ## Input
-
-{% capture challenge2 %}
-Complete the function to calculate the area of a rectangle. Replace the ??? with the correct calculation.
+{% capture challenge_input %}
 {% endcapture %}
 
-{% capture code2 %}
-def calculate_area(length, width):
-    # Replace ??? with the correct formula
-    area = ???
-    return area
-''' Test calculate area function '''
-print(calculate_area(5, 3))
-print(calculate_area(10, 2))
+{% capture code_input %}
 {% endcapture %}
 
 {% include code-runner.html
-   runner_id="exercise2"
+   runner_id="runner_input"
    language="python"
-   challenge=challenge2
-   code=code2
+   challenge=challenge_input
+   code=code_input
    height="350px"
 %}
 
 ## Output
-
-{% capture challenge2 %}
-Complete the function to calculate the area of a rectangle. Replace the ??? with the correct calculation.
+{% capture challenge_output %}
 {% endcapture %}
 
-{% capture code2 %}
-def calculate_area(length, width):
-    # Replace ??? with the correct formula
-    area = ???
-    return area
-''' Test calculate area function '''
-print(calculate_area(5, 3))
-print(calculate_area(10, 2))
+{% capture code_output %}
 {% endcapture %}
 
 {% include code-runner.html
-   runner_id="exercise2"
+   runner_id="runner_output"
    language="python"
-   challenge=challenge2
-   code=code2
+   challenge=challenge_output
+   code=code_output
    height="350px"
 %}
 
 ## List
-
-{% capture challenge2 %}
-Complete the function to calculate the area of a rectangle. Replace the ??? with the correct calculation.
+{% capture challenge_list %}
 {% endcapture %}
 
-{% capture code2 %}
-def calculate_area(length, width):
-    # Replace ??? with the correct formula
-    area = ???
-    return area
-''' Test calculate area function '''
-print(calculate_area(5, 3))
-print(calculate_area(10, 2))
+{% capture code_list %}
 {% endcapture %}
 
 {% include code-runner.html
-   runner_id="exercise2"
+   runner_id="runner_list"
    language="python"
-   challenge=challenge2
-   code=code2
+   challenge=challenge_list
+   code=code_list
    height="350px"
 %}
 
 ## Procedure
-
-{% capture challenge2 %}
-Complete the function to calculate the area of a rectangle. Replace the ??? with the correct calculation.
+{% capture challenge_procedure %}
 {% endcapture %}
 
-{% capture code2 %}
-def calculate_area(length, width):
-    # Replace ??? with the correct formula
-    area = ???
-    return area
-''' Test calculate area function '''
-print(calculate_area(5, 3))
-print(calculate_area(10, 2))
+{% capture code_procedure %}
 {% endcapture %}
 
 {% include code-runner.html
-   runner_id="exercise2"
+   runner_id="runner_procedure"
    language="python"
-   challenge=challenge2
-   code=code2
+   challenge=challenge_procedure
+   code=code_procedure
    height="350px"
 %}
 
-## Algorithim
-
-{% capture challenge2 %}
-Complete the function to calculate the area of a rectangle. Replace the ??? with the correct calculation.
+## Algorithm
+{% capture challenge_algorithm %}
 {% endcapture %}
 
-{% capture code2 %}
-def calculate_area(length, width):
-    # Replace ??? with the correct formula
-    area = ???
-    return area
-''' Test calculate area function '''
-print(calculate_area(5, 3))
-print(calculate_area(10, 2))
+{% capture code_algorithm %}
 {% endcapture %}
 
 {% include code-runner.html
-   runner_id="exercise2"
+   runner_id="runner_algorithm"
    language="python"
-   challenge=challenge2
-   code=code2
+   challenge=challenge_algorithm
+   code=code_algorithm
    height="350px"
 %}
 
 ## CPT Backend Draft
-{% capture challenge1 %}
-Pick a Language to start drafting your CPT
+{% capture challenge_backend %}
+{% endcapture %}
+
+{% capture code_backend %}
 {% endcapture %}
 
 {% include code-runner.html
-   runner_id="exercise1"
+   runner_id="runner_backend"
    language="python"
-   challenge=challenge1
-   code=code1
+   challenge=challenge_backend
+   code=code_backend
 %}
